@@ -8,10 +8,6 @@ const Sale = () => {
   return <Category tags={["sale"]} title="Sale" />;
 };
 
-// const SaleBanner = () => {
-//   return <SaleBanner />;
-// };
-
 const Jeans = () => {
   return <Category tags={["jeans"]} title="Jeans" />;
 };

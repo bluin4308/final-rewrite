@@ -3,6 +3,62 @@
   width: 80%;
   margin-left: auto;
 
+  .flex {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f1f1f1;
+
+    .label {
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+
+    div {
+      flex-basis: 33%;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        input {
+          border: 1px solid lightgray;
+          outline: 0;
+          font-size: 1rem;
+          padding: 0.6rem;
+          margin: 0.6rem 0;
+        }
+
+        input:focus {
+          outline: 0;
+          border: 1px solid gray;
+        }
+      }
+    }
+
+    .about {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .other {
+      display: flex;
+      flex-direction: column;
+      text-align-last: left;
+
+      p {
+        margin: 0.7rem 0;
+        display: flex;
+        column-gap: 0.3rem;
+      }
+    }
+  }
+
   .subscribe-form {
     display: flex;
     flex-direction: column;
@@ -40,5 +96,12 @@
       background-color: rgb(216, 55, 55);
       cursor: pointer;
     }
+  }
+
+  .copyright {
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    padding: 2rem;
   }
 }

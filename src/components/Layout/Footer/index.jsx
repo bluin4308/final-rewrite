@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMatch } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 import "./style.scss";
 
 export default function Footer() {
@@ -24,6 +24,7 @@ export default function Footer() {
         <div className="contact-form">
           <p className="label">Contact</p>
           <p>Questions? Go ahead!</p>
+          <br />
           <form>
             <input type="text" placeholder="Name" />
             <input type={"email"} placeholder="Email" />
@@ -32,12 +33,45 @@ export default function Footer() {
             <button>Send</button>
           </form>
         </div>
-        <div>
+        <div className="about">
           <p className="label">About</p>
+          <NavLink to="about">About us</NavLink>
+          <NavLink to="careers">We`re hiring</NavLink>
+          <NavLink to="#">Support</NavLink>
+          <NavLink to="#">Find store</NavLink>
+          <NavLink to="#">Shipment</NavLink>
+          <NavLink to="#">Payment</NavLink>
+          <NavLink to="#">Gift card</NavLink>
+          <NavLink to="#">Return</NavLink>
+          <NavLink to="#">Help</NavLink>
           {/* навлинки  */}
         </div>
-        <div></div>
+        <div className="other">
+          <p className="label">Store</p>
+          <p>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Company Name</span>
+          </p>
+          <p>
+            <i class="fa-solid fa-phone-flip"></i>
+            <span>38-08-07-1973</span>
+          </p>
+          <p>
+            <i class="fa-solid fa-envelope"></i>
+            <span>mail@clothstore.com</span>
+          </p>
+          <p className="label">We accept</p>
+          <p>
+            <i class="fa-brands fa-cc-amex"></i>
+            <span>Amex</span>
+          </p>
+          <p>
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Credit cards</span>
+          </p>
+        </div>
       </div>
+      <div className="copyright">Volodymyr Ukraintsev 2022</div>
     </div>
   );
 }
