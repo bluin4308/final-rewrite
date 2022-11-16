@@ -1,0 +1,83 @@
+.card {
+  flex-basis: 250px;
+  margin: 0.5rem;
+  position: relative;
+
+  .title {
+    padding: 0.3rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .sale-badge {
+    position: absolute;
+    text-transform: capitalize;
+    color: white;
+    font-size: 1.2rem;
+    background-color: black;
+    padding: 4px;
+    top: 0;
+  }
+
+  .sale-price {
+    position: absolute;
+    text-transform: capitalize;
+    color: red;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: white;
+    padding: 4px;
+    right: 0;
+    top: 287px;
+  }
+
+  .default-price {
+    position: absolute;
+    text-transform: capitalize;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: white;
+    padding: 4px;
+    right: 0;
+    top: 287px;
+  }
+
+  @media screen and (max-width: 1400px) {
+    flex-basis: 220px;
+
+    .sale-price {
+      top: 250px;
+    }
+
+    .default-price {
+      top: 250px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-basis: 200px;
+
+    .title {
+      font-size: 1rem;
+    }
+
+    .sale-price {
+      top: 225px;
+    }
+
+    .default-price {
+      top: 225px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.category {
+  display: flex;
+
+  .content {
+    flex-basis: 80%;
+    min-height: 100vh;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
