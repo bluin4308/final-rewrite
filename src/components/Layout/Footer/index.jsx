@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="about">
           <p className="label">About</p>
           <NavLink to="about">About us</NavLink>
-          <NavLink to="careers">We`re hiring</NavLink>
+          <NavLink to="careers">We're hiring</NavLink>
           <NavLink to="#">Support</NavLink>
           <NavLink to="#">Find store</NavLink>
           <NavLink to="#">Shipment</NavLink>
@@ -54,11 +54,11 @@ export default function Footer() {
           </p>
           <p>
             <i class="fa-solid fa-phone-flip"></i>
-            <span>38-08-07-1973</span>
+            <a href="tel:3808071973">38-08-07-1973</a>
           </p>
           <p>
             <i class="fa-solid fa-envelope"></i>
-            <span>mail@clothstore.com</span>
+            <a href="mailto:mail@clothstore.com">mail@clothstore.com</a>
           </p>
           <p className="label">We accept</p>
           <p>
