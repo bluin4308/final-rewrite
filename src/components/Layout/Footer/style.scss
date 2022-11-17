@@ -60,9 +60,28 @@
           transition: 0.15s;
         }
 
+        .error {
+          outline: 1px solid red;
+        }
+
+        input.error:focus {
+          outline: 1px solid red;
+        }
+
         button:hover {
           cursor: pointer;
           background-color: slategray;
+          outline: 1px solid black;
+        }
+
+        button:disabled:hover {
+          cursor: not-allowed;
+          background-color: slategray;
+          outline: 1px solid black;
+        }
+
+        button:disabled {
+          cursor: not-allowed;
           outline: 1px solid black;
         }
       }
@@ -120,6 +139,10 @@
 
     input:focus {
       outline: 0;
+    }
+
+    input.error:focus {
+      outline: 1px solid red;
     }
 
     .error {

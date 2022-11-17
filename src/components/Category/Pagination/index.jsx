@@ -65,11 +65,11 @@ export default function Pagination({
       <div className="selector">
         <p>Sort by</p>
         <select value={query} onChange={(e) => setQuery(e.target.value)}>
-          <option value="default">New</option>
-          <option value="priceDESC">Price &darr;</option>
+          <option value="default">Default</option>
           <option value="priceASC">Price &uarr;</option>
-          <option value="titleDESC">Alphabet &darr;</option>
+          <option value="priceDESC">Price &darr;</option>
           <option value="titleASC">Alphabet &uarr;</option>
+          <option value="titleDESC">Alphabet &darr;</option>
         </select>
       </div>
     </div>

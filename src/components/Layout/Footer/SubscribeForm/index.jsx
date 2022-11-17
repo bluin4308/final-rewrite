@@ -17,10 +17,6 @@ export default function SubscribeForm() {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
         const data = new FormData();
         data.append("email", values.email);
         fetch(
@@ -31,10 +27,10 @@ export default function SubscribeForm() {
           }
         ).then((res) => {
           if (res.ok) {
-            alert("All ok your message was sent");
+            alert("Your message was sent!");
             setSubmitting(false);
           } else {
-            alert("Something goes wrong");
+            alert("Something goes wrong!");
             setSubmitting(false);
           }
         });
@@ -49,6 +45,7 @@ export default function SubscribeForm() {
         handleSubmit,
         isSubmitting,
         isValid,
+        dirty,
       }) => (
         <form onSubmit={handleSubmit} className="subscribe-form">
           <p className="label">Subscribe</p>
@@ -60,13 +57,13 @@ export default function SubscribeForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
-            className={errors.email && touched.email ? "error" : ""}
+            className={errors.email && touched.email && dirty ? "error" : ""}
           />
           <button
             type="submit"
-            disabled={!isValid || errors.email || isSubmitting}
+            disabled={!isValid || errors.email || isSubmitting || !dirty}
           >
-            Submit
+            Subscribe
           </button>
         </form>
       )}
