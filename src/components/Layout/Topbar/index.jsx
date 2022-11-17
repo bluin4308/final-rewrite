@@ -13,7 +13,7 @@ export default function Topbar() {
         </NavLink>
       </div>
       <div className="_80percent">
-        <p className="page-title">{title}</p>
+        <pre className="page-title">{title}</pre>
         <div className="link-group">
           <NavLink to="cart">
             {({ isActive }) => (

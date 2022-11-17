@@ -103,7 +103,6 @@
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
-    // padding-top: 2rem;
     padding: 2rem 0.4rem;
     background-color: black;
     color: white;
@@ -123,6 +122,10 @@
       outline: 0;
     }
 
+    .error {
+      outline: 1px solid red;
+    }
+
     button {
       background-color: red;
       color: white;
@@ -135,6 +138,11 @@
     button:hover {
       background-color: rgb(216, 55, 55);
       cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      background-color: red;
     }
   }
 
