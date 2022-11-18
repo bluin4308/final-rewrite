@@ -4,6 +4,7 @@ import Layout from "../Layout";
 import SaleBanner from "../SaleBanner";
 import Category from "../Category";
 import Cart from "../Cart";
+import Search from "../Search";
 
 const Sale = () => {
   return <Category tags={["sale"]} title="Sale" />;
@@ -22,7 +23,7 @@ export default function Routing() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<SaleBanner />} />
-        <Route path="search" element={<p>search</p>} />
+        <Route path="search" element={<Search />} />
         <Route path="cart" element={<Cart />} />
         <Route path="sale" element={<Sale />} />
         <Route path="jeans" element={<Jeans />} />

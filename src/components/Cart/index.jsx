@@ -27,11 +27,14 @@ export default function Cart() {
       <Navigation />
       <div className="_80percent">
         {clothes.length === 0 && (
-          <p className="empty-cart">Your cart is empty</p>
+          <p className="empty-cart">Your cart is empty.</p>
         )}
-        {clothes.length > 0 && !queryObj.loading && queryObj.data && (
-          <p>content</p>
-        )}
+        {clothes.length > 0 &&
+          !queryObj.loading &&
+          queryObj.data &&
+          queryObj.data.clothes.nodes.map((item, index) => {
+            return <Card data={item} key={index} />;
+          })}
       </div>
     </div>
   );

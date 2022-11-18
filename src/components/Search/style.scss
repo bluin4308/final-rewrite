@@ -1,0 +1,9 @@
+.search-layout {
+  display: flex;
+  min-height: 100vh;
+
+  ._80percent {
+    padding: 2rem 0;
+    flex-basis: 80&;
+  }
+}
