@@ -23,6 +23,12 @@ export default function Navigation() {
       >
         jackets
       </NavLink>
+      <NavLink
+        to="../all"
+        className={({ isActive }) => (isActive ? "active" : undefined)}
+      >
+        all clothes
+      </NavLink>
     </div>
   );
 }

@@ -18,6 +18,10 @@ const Jackets = () => {
   return <Category tags={["jacket"]} title="Jackets" />;
 };
 
+const AllClothes = () => {
+  return <Category tags={[]} title="All clothes" />;
+};
+
 export default function Routing() {
   return (
     <Routes>
@@ -28,6 +32,7 @@ export default function Routing() {
         <Route path="sale" element={<Sale />} />
         <Route path="jeans" element={<Jeans />} />
         <Route path="jackets" element={<Jackets />} />
+        <Route path="all" element={<AllClothes />} />
         <Route path="*" element={<p>error</p>} />
       </Route>
     </Routes>
