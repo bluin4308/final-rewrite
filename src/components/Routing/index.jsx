@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "../Layout";
 import SaleBanner from "../SaleBanner";
 import Category from "../Category";
+import Cart from "../Cart";
 
 const Sale = () => {
   return <Category tags={["sale"]} title="Sale" />;
@@ -22,7 +23,7 @@ export default function Routing() {
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<SaleBanner />} />
         <Route path="search" element={<p>search</p>} />
-        <Route path="cart" element={<p>cart</p>} />
+        <Route path="cart" element={<Cart />} />
         <Route path="sale" element={<Sale />} />
         <Route path="jeans" element={<Jeans />} />
         <Route path="jackets" element={<Jackets />} />
