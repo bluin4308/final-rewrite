@@ -4,6 +4,14 @@
 
   ._80percent {
     padding: 2rem 0;
-    flex-basis: 80&;
+    text-align: center;
+    flex-basis: 80%;
+
+    input {
+      width: 250px;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid slategray;
+    }
   }
 }

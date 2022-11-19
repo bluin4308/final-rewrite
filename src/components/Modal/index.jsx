@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useStore from "../../../../store";
+import useStore from "../../store";
 import "./style.scss";
 
 export default function Modal({ visible, closeModal, item, isSale }) {
