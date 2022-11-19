@@ -1,14 +1,15 @@
 import React from "react";
-import { Link, useMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SubscribeForm from "./SubscribeForm";
 import ContactForm from "./ContactForm";
 import "./style.scss";
 
 export default function Footer() {
-  const matchRoot = useMatch("/");
+  // const matchRoot = useMatch("/");
   return (
     <div className="footer">
-      {!!matchRoot && <SubscribeForm />}
+      {/* {!!matchRoot/ && <SubscribeForm />} */}
+      <SubscribeForm />
       <div className="flex">
         <ContactForm />
         <div className="about">

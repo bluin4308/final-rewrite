@@ -15,7 +15,7 @@ export default function Cart() {
   }, []);
 
   const extractID = clothes.map((item) => item.id);
-  const queryObj = useQuery(GET_CART_ITEMS, {
+  const { data, loading } = useQuery(GET_CART_ITEMS, {
     fetchPolicy: "no-cache",
     variables: {
       array: extractID,
@@ -30,9 +30,9 @@ export default function Cart() {
           <p className="empty-cart">Your cart is empty.</p>
         )}
         {clothes.length > 0 &&
-          !queryObj.loading &&
-          queryObj.data &&
-          queryObj.data.clothes.nodes.map((item, index) => {
+          !loading &&
+          data &&
+          data.clothes.nodes.map((item, index) => {
             return <Card data={item} key={index} />;
           })}
       </div>

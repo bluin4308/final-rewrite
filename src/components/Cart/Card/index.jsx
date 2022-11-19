@@ -6,6 +6,8 @@ const isSale = (item) => {
 };
 
 export default function Card({ data }) {
+  const { changeSize, deleteCloth } = useStore();
+
   return (
     <div className="card">
       <img
