@@ -56,6 +56,11 @@ export default function Card({ data }) {
           </button>
         </div>
       </div>
+      <div className="delete-cloth">
+        <button onClick={() => deleteCloth({ id: data.id })}>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
+      </div>
     </div>
   );
 }

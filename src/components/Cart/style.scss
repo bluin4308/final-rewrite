@@ -21,6 +21,7 @@
       border: 1px solid lightgray;
       border-radius: 8px;
       transition: 0.15s;
+      justify-content: space-evenly;
 
       img {
         flex-basis: 10%;
@@ -40,6 +41,17 @@
 
       .price {
         flex-basis: 10%;
+      }
+
+      .size-group {
+        display: flex;
+        align-items: center;
+        column-gap: 1rem;
+
+        .button-group {
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
 

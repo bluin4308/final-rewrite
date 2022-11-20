@@ -12,16 +12,21 @@ const useStore = create(
         const index = get().clothes.findIndex((item) => item.id === id);
         if (index >= 0) {
           const currentClothObject = { ...get().clothes[index] };
-          let { quantityL, quantityM, quantityS } = currentClothObject;
           switch (type) {
             case "s":
-              !!quantityS ? quantityS++ : (quantityS = 1);
+              !!currentClothObject.quantityS
+                ? currentClothObject.quantityS++
+                : (currentClothObject.quantityS = 1);
               break;
             case "m":
-              !!quantityM ? quantityM++ : (quantityM = 1);
+              !!currentClothObject.quantityM
+                ? currentClothObject.quantityM++
+                : (currentClothObject.quantityM = 1);
               break;
             case "l":
-              !!quantityL ? quantityL++ : (quantityL = 1);
+              !!currentClothObject.quantityL
+                ? currentClothObject.quantityL++
+                : (currentClothObject.quantityL = 1);
               break;
             default:
               break;
@@ -37,16 +42,15 @@ const useStore = create(
           const newClothObject = {
             id: id,
           };
-          let { quantityL, quantityM, quantityS } = newClothObject;
           switch (type) {
             case "s":
-              quantityS = 1;
+              newClothObject.quantityS = 1;
               break;
             case "m":
-              quantityM = 1;
+              newClothObject.quantityM = 1;
               break;
             case "l":
-              quantityL = 1;
+              newClothObject.quantityL = 1;
               break;
             default:
               break;

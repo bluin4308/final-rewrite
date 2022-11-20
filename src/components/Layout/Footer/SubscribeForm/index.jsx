@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { Formik } from "formik";
 
-export default function SubscribeForm() {
+export default memo(function SubscribeForm() {
   return (
     <Formik
       initialValues={{ email: "" }}
@@ -69,4 +69,4 @@ export default function SubscribeForm() {
       )}
     </Formik>
   );
-}
+});

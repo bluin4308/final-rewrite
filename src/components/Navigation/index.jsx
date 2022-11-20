@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
 
-export default function Navigation() {
+export default memo(function Navigation() {
   return (
     <div className="navigation">
       <NavLink
@@ -31,4 +31,4 @@ export default function Navigation() {
       </NavLink>
     </div>
   );
-}
+});
