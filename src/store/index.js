@@ -12,7 +12,7 @@ const useStore = create(
         const index = get().clothes.findIndex((item) => item.id === id);
         if (index >= 0) {
           const currentClothObject = { ...get().clothes[index] };
-          const { quantityL, quantityM, quantityS } = currentClothObject;
+          let { quantityL, quantityM, quantityS } = currentClothObject;
           switch (type) {
             case "s":
               !!quantityS ? quantityS++ : (quantityS = 1);
@@ -37,15 +37,16 @@ const useStore = create(
           const newClothObject = {
             id: id,
           };
+          let { quantityL, quantityM, quantityS } = newClothObject;
           switch (type) {
             case "s":
-              newClothObject.quantityS = 1;
+              quantityS = 1;
               break;
             case "m":
-              newClothObject.quantityM = 1;
+              quantityM = 1;
               break;
             case "l":
-              newClothObject.quantityL = 1;
+              quantityL = 1;
               break;
             default:
               break;
@@ -72,41 +73,29 @@ const useStore = create(
       changeSize: ({ id, action, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
-
+        let { quantityL, quantityM, quantityS } = currentClothObject;
         if (action === "+" && type === "s") {
-          !!currentClothObject.quantityS
-            ? currentClothObject.quantityS++
-            : (currentClothObject.quantityS = 1);
+          !!quantityS ? quantityS++ : (quantityS = 1);
         }
 
         if (action === "+" && type === "m") {
-          !!currentClothObject.quantityM
-            ? currentClothObject.quantityM++
-            : (currentClothObject.quantityM = 1);
+          !!quantityM ? quantityM++ : (quantityM = 1);
         }
 
         if (action === "+" && type === "l") {
-          !!currentClothObject.quantityL
-            ? currentClothObject.quantityL++
-            : (currentClothObject.quantityL = 1);
+          !!quantityL ? quantityL++ : (quantityL = 1);
         }
 
         if (action === "-" && type === "s") {
-          !!currentClothObject.quantityS
-            ? currentClothObject.quantityS--
-            : (currentClothObject.quantityS = 0);
+          !!quantityS ? quantityS-- : (quantityS = 0);
         }
 
         if (action === "-" && type === "m") {
-          !!currentClothObject.quantityM
-            ? currentClothObject.quantityM--
-            : (currentClothObject.quantityM = 0);
+          !!quantityM ? quantityM-- : (quantityM = 0);
         }
 
         if (action === "-" && type === "l") {
-          !!currentClothObject.quantityL
-            ? currentClothObject.quantityL--
-            : (currentClothObject.quantityL = 0);
+          !!quantityL ? quantityL-- : (quantityL = 0);
         }
 
         set((state) => {
@@ -119,7 +108,7 @@ const useStore = create(
       addSize: ({ id, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
-        const { quantityL, quantityM, quantityS } = currentClothObject;
+        let { quantityL, quantityM, quantityS } = currentClothObject;
         switch (type) {
           case "s":
             !!quantityS ? quantityS++ : quantityS === 1;
@@ -138,7 +127,7 @@ const useStore = create(
       deleteSize: ({ id, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
-        const { quantityL, quantityM, quantityS } = currentClothObject;
+        let { quantityL, quantityM, quantityS } = currentClothObject;
         switch (type) {
           case "s":
             !!quantityS ? quantityS-- : quantityS === 0;

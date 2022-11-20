@@ -6,9 +6,11 @@ import "./style.scss";
 
 export default function SaleBanner() {
   const { setTitle } = useTitle();
+
   useEffect(() => {
-    setTitle(" ");
+    setTitle("Cloth Store");
   }, []);
+
   return (
     <div className="sale-container">
       <Navigation />

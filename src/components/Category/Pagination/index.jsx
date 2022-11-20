@@ -44,7 +44,7 @@ export default function Pagination({
             })
           }
         >
-          Previos
+          Previous
         </button>
         <button
           className="pagination-button"
