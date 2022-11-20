@@ -35,7 +35,7 @@ function selectQuery(filter) {
 export default function Category({ tags, title }) {
   const [query, setQuery] = useState("default");
   const { setTitle } = useTitle();
-  const [perPage, setPerPage] = useState("4");
+  const [perPage, setPerPage] = useState("5");
   const [variables, setVariables] = useState({
     tags: tags || [""],
     first: parseInt(perPage),
@@ -51,6 +51,13 @@ export default function Category({ tags, title }) {
       first: parseInt(perPage),
     });
   }, [query]);
+
+  useEffect(() => {
+    setVariables({
+      tags: tags || [""],
+      first: parseInt(perPage),
+    });
+  }, [perPage]);
 
   const queryObj = useQuery(selectQuery(query), {
     variables: variables,
