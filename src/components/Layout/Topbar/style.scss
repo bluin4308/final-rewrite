@@ -30,6 +30,20 @@
   }
 
   .link-group {
+    display: flex;
+    align-items: center;
+
+    .cart-counter {
+      text-align: center;
+      font-size: 1.1rem;
+      // color: white;
+      // background-color: black;
+      // border-radius: 50%;
+      // padding: 2px;
+      // width: 25px;
+      // height: 25px;
+    }
+
     a {
       font-size: 1.2rem;
       color: black;
