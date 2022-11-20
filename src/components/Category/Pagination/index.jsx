@@ -11,9 +11,9 @@ export default function Pagination({
   variables,
 }) {
   const options = [
-    { value: "5", text: 5 },
-    { value: "10", text: 10 },
-    // { value: "6", text: 6 },
+    { value: "4", text: 4 },
+    { value: "8", text: 8 },
+    { value: "12", text: 12 },
   ];
 
   return (

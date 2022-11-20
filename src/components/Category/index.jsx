@@ -35,7 +35,7 @@ function selectQuery(filter) {
 export default function Category({ tags, title }) {
   const [query, setQuery] = useState("default");
   const { setTitle } = useTitle();
-  const [perPage, setPerPage] = useState("5");
+  const [perPage, setPerPage] = useState("8");
   const [variables, setVariables] = useState({
     tags: tags || [""],
     first: parseInt(perPage),
@@ -97,6 +97,14 @@ export default function Category({ tags, title }) {
             setVariables={setVariables}
             variables={variables}
           />
+          <div className="loader">
+            <div className="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         </div>
       </div>
     );

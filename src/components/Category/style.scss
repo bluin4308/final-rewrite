@@ -4,11 +4,18 @@
   .content {
     flex-basis: 80%;
     min-height: 100vh;
+    padding-bottom: 5rem;
   }
 
   .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
   }
 }
