@@ -69,35 +69,25 @@ const useStore = create(
         });
       },
 
-      // changeSize изменить размер (Cart)
-      changeSize: ({ id, action, type }) => {
+      addSize: ({ id, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
-        let { quantityL, quantityM, quantityS } = currentClothObject;
-        if (action === "+" && type === "s") {
-          !!quantityS ? quantityS++ : (quantityS = 1);
-        }
 
-        if (action === "+" && type === "m") {
-          !!quantityM ? quantityM++ : (quantityM = 1);
+        if (type === "s") {
+          !!currentClothObject.quantityS
+            ? currentClothObject.quantityS++
+            : (currentClothObject.quantityS = 1);
         }
-
-        if (action === "+" && type === "l") {
-          !!quantityL ? quantityL++ : (quantityL = 1);
+        if (type === "m") {
+          !!currentClothObject.quantityM
+            ? currentClothObject.quantityM++
+            : (currentClothObject.quantityM = 1);
         }
-
-        if (action === "-" && type === "s") {
-          !!quantityS ? quantityS-- : (quantityS = 0);
+        if (type === "l") {
+          !!currentClothObject.quantityL
+            ? currentClothObject.quantityL++
+            : (currentClothObject.quantityL = 1);
         }
-
-        if (action === "-" && type === "m") {
-          !!quantityM ? quantityM-- : (quantityM = 0);
-        }
-
-        if (action === "-" && type === "l") {
-          !!quantityL ? quantityL-- : (quantityL = 0);
-        }
-
         set((state) => {
           const currentClothesArray = [...state.clothes];
           currentClothesArray[index] = currentClothObject;
@@ -105,42 +95,33 @@ const useStore = create(
         });
       },
 
-      addSize: ({ id, type }) => {
-        const index = get().clothes.findIndex((item) => item.id === id);
-        const currentClothObject = { ...get().clothes[index] };
-        let { quantityL, quantityM, quantityS } = currentClothObject;
-        switch (type) {
-          case "s":
-            !!quantityS ? quantityS++ : quantityS === 1;
-            break;
-
-          case "m":
-            !!quantityM ? quantityM++ : quantityM === 1;
-            break;
-
-          case "l":
-            !!quantityL ? quantityL++ : quantityL === 1;
-            break;
-        }
-      },
-
       deleteSize: ({ id, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
-        let { quantityL, quantityM, quantityS } = currentClothObject;
         switch (type) {
           case "s":
-            !!quantityS ? quantityS-- : quantityS === 0;
+            !!currentClothObject.quantityS
+              ? currentClothObject.quantityS--
+              : (currentClothObject.quantityS = 0);
             break;
 
           case "m":
-            !!quantityM ? quantityM-- : quantityM === 0;
+            !!currentClothObject.quantityM
+              ? currentClothObject.quantityM--
+              : (currentClothObject.quantityM = 0);
             break;
 
           case "l":
-            !!quantityL ? quantityL-- : quantityL === 0;
+            !!currentClothObject.quantityL
+              ? currentClothObject.quantityL--
+              : (currentClothObject.quantityL = 0);
             break;
         }
+        set((state) => {
+          const currentClothesArray = [...state.clothes];
+          currentClothesArray[index] = currentClothObject;
+          return { clothes: currentClothesArray };
+        });
       },
 
       // написать добавление стоимости в cloth для методов addCloth, addSize, deleteSize

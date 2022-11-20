@@ -11,7 +11,7 @@ import {
   GET_ITEMS_PRICE_DESC,
   GET_ITEMS_TITLE_ASC,
   GET_ITEMS_TITLE_DESC,
-} from "../../apollo/queries";
+} from "../../apollo";
 
 function selectQuery(filter) {
   switch (filter) {
