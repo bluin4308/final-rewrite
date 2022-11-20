@@ -12,22 +12,16 @@ const useStore = create(
         const index = get().clothes.findIndex((item) => item.id === id);
         if (index >= 0) {
           const currentClothObject = { ...get().clothes[index] };
-
+          const { quantityL, quantityM, quantityS } = currentClothObject;
           switch (type) {
             case "s":
-              !!currentClothObject.quantityS
-                ? currentClothObject.quantityS++
-                : (currentClothObject.quantityS = 1);
+              !!quantityS ? quantityS++ : (quantityS = 1);
               break;
             case "m":
-              !!currentClothObject.quantityM
-                ? currentClothObject.quantityM++
-                : (currentClothObject.quantityM = 1);
+              !!quantityM ? quantityM++ : (quantityM = 1);
               break;
             case "l":
-              !!currentClothObject.quantityL
-                ? currentClothObject.quantityL++
-                : (currentClothObject.quantityL = 1);
+              !!quantityL ? quantityL++ : (quantityL = 1);
               break;
             default:
               break;
@@ -63,6 +57,7 @@ const useStore = create(
           });
         }
       },
+
       // deleteCloth удаление вещи целиком (Cart)
       deleteCloth: ({ id }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
@@ -72,6 +67,7 @@ const useStore = create(
           return { clothes: currentClothesArray };
         });
       },
+
       // changeSize изменить размер (Cart)
       changeSize: ({ id, action, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
@@ -119,6 +115,50 @@ const useStore = create(
           return { clothes: currentClothesArray };
         });
       },
+
+      addSize: ({ id, type }) => {
+        const index = get().clothes.findIndex((item) => item.id === id);
+        const currentClothObject = { ...get().clothes[index] };
+        const { quantityL, quantityM, quantityS } = currentClothObject;
+        switch (type) {
+          case "s":
+            !!quantityS ? quantityS++ : quantityS === 1;
+            break;
+
+          case "m":
+            !!quantityM ? quantityM++ : quantityM === 1;
+            break;
+
+          case "l":
+            !!quantityL ? quantityL++ : quantityL === 1;
+            break;
+        }
+      },
+
+      deleteSize: ({ id, type }) => {
+        const index = get().clothes.findIndex((item) => item.id === id);
+        const currentClothObject = { ...get().clothes[index] };
+        const { quantityL, quantityM, quantityS } = currentClothObject;
+        switch (type) {
+          case "s":
+            !!quantityS ? quantityS-- : quantityS === 0;
+            break;
+
+          case "m":
+            !!quantityM ? quantityM-- : quantityM === 0;
+            break;
+
+          case "l":
+            !!quantityL ? quantityL-- : quantityL === 0;
+            break;
+        }
+      },
+
+      // написать добавление стоимости в cloth для методов addCloth, addSize, deleteSize
+      // usecase: click Buy button(Modal) -> cloth нет в массиве clothes ->
+      //  -> addCloth({id,type,price(тут проверка на скидку через isSale)})
+
+      // usecase: click Buy button(Modal) -> cloth есть в массиве -> внутри else в addCloth
     }),
     {
       name: "clothes",
