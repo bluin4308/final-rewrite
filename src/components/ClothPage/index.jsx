@@ -1,11 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Navigation from "../Navigation";
 import { useQuery } from "@apollo/client";
 import { GET_ONE_ITEM } from "../../apollo";
 import { isSale } from "../../helpers";
-import "./style.scss";
+import Navigation from "../Navigation";
 import NetworkError from "../NetworkError";
+import "./style.scss";
+
+const parser = new DOMParser();
 
 export default function ClothPage() {
   const { id } = useParams();
@@ -19,6 +21,7 @@ export default function ClothPage() {
 
   if (!loading && data) {
     const item = data.clothes.nodes[0];
+
     return (
       <div className="cloth-page">
         <Navigation />
@@ -30,8 +33,22 @@ export default function ClothPage() {
           />
           <div className="cloth-data">
             <p className="title">{item.title}</p>
+            <p className="price">
+              $
+              {isSale(item) ? (
+                <>{item.customFields.saleprice} with sale</>
+              ) : (
+                <>{item.customFields.price}</>
+              )}
+            </p>
+            <p className="description-title">Description:</p>
+            <p className="">
+              {
+                parser.parseFromString(item.content, "text/html").body
+                  .textContent
+              }
+            </p>
           </div>
-          {isSale(item) && <p>You can buy this cloth with discount!</p>}
         </div>
       </div>
     );
@@ -42,12 +59,14 @@ export default function ClothPage() {
       <div className="cloth-page">
         <Navigation />
         <div className="content">
-          <div className="loader">
-            <div className="lds-ring">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+          <div className="loader-container">
+            <div className="loader">
+              <div className="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
           </div>
         </div>

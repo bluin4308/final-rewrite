@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useStore, { useTitle } from "../../store";
+import { useTitle } from "../../store";
 import { useLazyQuery } from "@apollo/client";
 import { SEARCH_ITEMS } from "../../apollo";
 import Navigation from "../Navigation";
@@ -12,7 +12,6 @@ export default function Search() {
     fetchPolicy: "no-cache",
   });
 
-  const { addCloth } = useStore();
   const { setTitle } = useTitle();
 
   useEffect(() => {
