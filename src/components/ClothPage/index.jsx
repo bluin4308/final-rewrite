@@ -5,11 +5,12 @@ import { useQuery } from "@apollo/client";
 import { GET_ONE_ITEM } from "../../apollo";
 import { isSale } from "../../helpers";
 import "./style.scss";
+import NetworkError from "../NetworkError";
 
 export default function ClothPage() {
   const { id } = useParams();
 
-  const { loading, data } = useQuery(GET_ONE_ITEM, {
+  const { loading, data, error } = useQuery(GET_ONE_ITEM, {
     variables: {
       id: id,
     },
@@ -50,6 +51,15 @@ export default function ClothPage() {
             </div>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (!loading && !!error) {
+    return (
+      <div className="cloth-page">
+        <Navigation />
+        <NetworkError />
       </div>
     );
   }

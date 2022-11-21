@@ -3,6 +3,7 @@ import { useTitle } from "../../store";
 import Navigation from "../Navigation";
 import Pagination from "./Pagination";
 import Card from "./Card";
+import NetworkError from "../NetworkError";
 import { useQuery } from "@apollo/client";
 import "./style.scss";
 import {
@@ -63,6 +64,7 @@ export default function Category({ tags, title }) {
     variables: variables,
     fetchPolicy: "no-cache",
   });
+
   if (!queryObj.loading && queryObj.data) {
     return (
       <div className="category">
@@ -85,7 +87,9 @@ export default function Category({ tags, title }) {
         </div>
       </div>
     );
-  } else {
+  }
+
+  if (queryObj.loading && !queryObj.data) {
     return (
       <div className="category">
         <Navigation />
@@ -106,6 +110,15 @@ export default function Category({ tags, title }) {
             </div>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (!queryObj.loading && !!queryObj.error) {
+    return (
+      <div className="category">
+        <Navigation />
+        <NetworkError />
       </div>
     );
   }
