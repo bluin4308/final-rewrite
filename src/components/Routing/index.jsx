@@ -5,6 +5,7 @@ import SaleBanner from "../SaleBanner";
 import Category from "../Category";
 import Cart from "../Cart";
 import Search from "../Search";
+import ClothPage from "../ClothPage";
 
 const Sale = () => {
   return <Category tags={["sale"]} title="Sale" />;
@@ -30,9 +31,13 @@ export default function Routing() {
         <Route path="search" element={<Search />} />
         <Route path="cart" element={<Cart />} />
         <Route path="sale" element={<Sale />} />
+        <Route path="sale/:id" element={<ClothPage />} />
         <Route path="jeans" element={<Jeans />} />
+        <Route path="jeans/:id" element={<ClothPage />} />
         <Route path="jackets" element={<Jackets />} />
+        <Route path="jackets/:id" element={<ClothPage />} />
         <Route path="all" element={<AllClothes />} />
+        <Route path="all/:id" element={<ClothPage />} />
         <Route path="*" element={<p>error</p>} />
       </Route>
     </Routes>

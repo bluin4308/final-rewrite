@@ -45,6 +45,33 @@ const GET_ITEMS = gql`
   }
 `;
 
+const GET_ONE_ITEM = gql`
+  query GET_ONE_ITEM($id: [ID]) {
+    clothes(where: { in: $id }) {
+      nodes {
+        id
+        title
+        content
+        featuredImage {
+          node {
+            sourceUrl
+            title
+          }
+        }
+        customFields {
+          price
+          saleprice
+        }
+        tags {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
+
 const GET_ITEMS_PRICE_ASC = gql`
   query GET_ITEMS_PRICE_ASC(
     $first: Int
@@ -299,4 +326,5 @@ export {
   GET_ITEMS_PRICE_DESC,
   GET_ITEMS_TITLE_ASC,
   GET_ITEMS_TITLE_DESC,
+  GET_ONE_ITEM,
 };

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import Modal from "../../Modal";
+import React from "react";
+import { Link } from "react-router-dom";
+// import Modal from "../../Modal";
 import "./style.scss";
 
 const isSale = (item) => {
@@ -7,7 +8,7 @@ const isSale = (item) => {
 };
 
 export default function Card({ data }) {
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
 
   return (
     <div className="card">
@@ -25,15 +26,15 @@ export default function Card({ data }) {
         <div className="default-price">${data.customFields.price}</div>
       )}
 
-      <p className="title" onClick={() => setModal(true)}>
+      <Link className="title" to={data.id}>
         {data.title}
-      </p>
-      <Modal
+      </Link>
+      {/* <Modal
         visible={modal}
         closeModal={setModal}
         item={data}
         isSale={isSale(data)}
-      />
+      /> */}
     </div>
   );
 }

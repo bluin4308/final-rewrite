@@ -1,0 +1,16 @@
+.cloth-page {
+  display: flex;
+
+  .content {
+    flex-basis: 80%;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    padding-top: 7rem;
+  }
+}
