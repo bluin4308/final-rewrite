@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../../store";
-
-const isSale = (item) => {
-  return item.tags.nodes.findIndex((item) => item.name === "sale") > 0;
-};
+import { isSale } from "../../../helpers";
 
 export default function Card({ data }) {
   const { clothes, addSize, deleteSize, deleteCloth } = useStore();

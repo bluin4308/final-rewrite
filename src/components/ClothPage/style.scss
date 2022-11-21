@@ -1,11 +1,24 @@
 .cloth-page {
   display: flex;
-
+  // min-height: 100vh;
+  margin-bottom: 50vh;
   .content {
     flex-basis: 80%;
-    min-height: 100vh;
+    display: flex;
     padding-bottom: 5rem;
     padding-top: 2rem;
+    column-gap: 3rem;
+    .cloth-data {
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .photo {
+      width: 250px;
+      aspect-ratio: 4 / 5;
+      height: auto;
+    }
   }
 
   .loader {

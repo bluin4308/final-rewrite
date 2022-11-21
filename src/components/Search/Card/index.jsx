@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import Modal from "../../Modal";
-// const isSale = (item) => {
-//   return item.tags.nodes.findIndex((item) => item.name === "sale") > 0;
-// };
 
 export default function Card({ data }) {
   // const [modal, setModal] = useState(false);

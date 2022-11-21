@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Navigation from "../Navigation";
 import { useQuery } from "@apollo/client";
 import { GET_ONE_ITEM } from "../../apollo";
+import { isSale } from "../../helpers";
 import "./style.scss";
 
 export default function ClothPage() {
@@ -16,10 +17,21 @@ export default function ClothPage() {
   });
 
   if (!loading && data) {
+    const item = data.clothes.nodes[0];
     return (
       <div className="cloth-page">
         <Navigation />
-        <div className="content">{data.clothes.nodes[0].title}</div>
+        <div className="content">
+          <img
+            className="photo"
+            src={item.featuredImage.node.sourceUrl}
+            alt={item.featuredImage.node.title}
+          />
+          <div className="cloth-data">
+            <p className="title">{item.title}</p>
+          </div>
+          {isSale(item) && <p>You can buy this cloth with discount!</p>}
+        </div>
       </div>
     );
   }
