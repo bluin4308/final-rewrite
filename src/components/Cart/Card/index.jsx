@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useStore from "../../../store";
 import { isSale } from "../../../helpers";
 
@@ -7,20 +7,10 @@ export default function Card({ data }) {
 
   const clothIndex = clothes.findIndex((cloth) => cloth.id === data.id);
 
-  const [s, setS] = useState(clothes[clothIndex].quantityS || 0);
-  const [m, setM] = useState(clothes[clothIndex].quantityM || 0);
-  const [l, setL] = useState(clothes[clothIndex].quantityL || 0);
-
-  useEffect(() => {
-    setS(clothes[clothIndex].quantityS || 0);
-    setM(clothes[clothIndex].quantityM || 0);
-    setL(clothes[clothIndex].quantityL || 0);
-  }, [clothes]);
-
-  if (((s == m) == l) == 0) {
-    deleteCloth({ id: data.id });
-    return;
-  }
+  const isLast = () => {
+    if (clothes[clothIndex].quantityS) {
+    }
+  };
 
   return (
     <div className="card">
@@ -36,11 +26,12 @@ export default function Card({ data }) {
       )}
       <div className="size-group">
         {/* S */}
-        <p>{s}</p>
+        <p>S: </p>
+        <p>{clothes[clothIndex].quantityS || 0}</p>
         <div className="button-group">
           <button onClick={() => addSize({ id: data.id, type: "s" })}>+</button>
           <button
-            disabled={s === 0}
+            disabled={clothes[clothIndex].quantityS === 0}
             onClick={() => deleteSize({ id: data.id, type: "s" })}
           >
             -
@@ -49,11 +40,12 @@ export default function Card({ data }) {
       </div>
       <div className="size-group">
         {/* M */}
-        <p>{m}</p>
+        <p>M: </p>
+        <p>{clothes[clothIndex].quantityM || 0}</p>
         <div className="button-group">
           <button onClick={() => addSize({ id: data.id, type: "m" })}>+</button>
           <button
-            disabled={m === 0}
+            disabled={clothes[clothIndex].quantityM === 0}
             onClick={() => deleteSize({ id: data.id, type: "m" })}
           >
             -
@@ -62,11 +54,12 @@ export default function Card({ data }) {
       </div>
       <div className="size-group">
         {/* L */}
-        <p>{l}</p>
+        <p>L: </p>
+        <p>{clothes[clothIndex].quantityL || 0}</p>
         <div className="button-group">
           <button onClick={() => addSize({ id: data.id, type: "l" })}>+</button>
           <button
-            disabled={l === 0}
+            disabled={clothes[clothIndex].quantityL === 0}
             onClick={() => deleteSize({ id: data.id, type: "l" })}
           >
             -
