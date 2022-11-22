@@ -30,9 +30,9 @@
     }
 
     .photo {
-      aspect-ratio: 4 / 5;
-      width: 350px;
-      height: auto;
+      aspect-ratio: 4 / 5 !important;
+      width: 350px !important;
+      height: auto !important;
     }
   }
 

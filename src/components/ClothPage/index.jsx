@@ -49,13 +49,15 @@ export default function ClothPage() {
         <Navigation />
         <Modal showModal={showModal} setShowModal={setShowModal} />
         <div className="content">
-          {/* <img
-            className="photo"
-            src={item.featuredImage.node.sourceUrl}
-            alt={item.featuredImage.node.title}
-          /> */}
           <ReactImageMagnify
             {...{
+              imageStyle: {
+                borderRadius: "4px",
+                width: "90%",
+                height: "auto",
+                aspectRatio: "4/5",
+              },
+              imageClassName: "photo",
               smallImage: {
                 alt: "Wristwatch by Ted Baker London",
                 isFluidWidth: true,
