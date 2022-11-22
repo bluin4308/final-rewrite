@@ -2,6 +2,18 @@
   display: flex;
   min-height: 100vh;
 
+  .loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 7rem;
+  }
+
+  .loader-container {
+    width: 100%;
+  }
+
   ._80percent {
     flex-basis: 80%;
     padding: 2rem 0;
@@ -36,8 +48,8 @@
       }
 
       .title:hover {
-        text-decoration: none;
-        cursor: default;
+        text-decoration: underline;
+        cursor: pointer;
       }
 
       .price {

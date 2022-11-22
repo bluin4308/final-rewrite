@@ -1,6 +1,6 @@
 .cloth-page {
   display: flex;
-  margin-bottom: 50vh;
+  margin-bottom: 25vh;
 
   .content {
     flex-basis: 80%;
@@ -99,10 +99,6 @@
       background-color: #edeff2;
       box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
       transition: none 0s;
-    }
-
-    .size-button:focus {
-      outline: 1px transparent;
     }
   }
 }

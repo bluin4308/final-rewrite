@@ -6,6 +6,7 @@ import { isSale } from "../../helpers";
 import useStore, { useTitle } from "../../store";
 import Navigation from "../Navigation";
 import NetworkError from "../NetworkError";
+import Modal from "../Modal";
 import "./style.scss";
 
 const parser = new DOMParser();
@@ -13,6 +14,8 @@ const parser = new DOMParser();
 export default function ClothPage() {
   const { id } = useParams();
   const [size, setSize] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const { addCloth } = useStore();
 
   const { setTitle } = useTitle();
@@ -33,11 +36,17 @@ export default function ClothPage() {
   };
 
   if (!loading && data) {
+    const handleSubmit = () => {
+      addCloth({ id: item.id, type: size });
+      setShowModal(true);
+    };
+
     const item = data.clothes.nodes[0];
 
     return (
       <div className="cloth-page">
         <Navigation />
+        <Modal showModal={showModal} setShowModal={setShowModal} />
         <div className="content">
           <img
             className="photo"
@@ -87,7 +96,8 @@ export default function ClothPage() {
               <button
                 className="size-button"
                 disabled={!size}
-                onClick={() => addCloth({ id: item.id, type: size })}
+                // onClick={() => addCloth({ id: item.id, type: size })}
+                onClick={() => handleSubmit()}
               >
                 buy
               </button>

@@ -1,6 +1,7 @@
 import React from "react";
 import useStore from "../../../store";
 import { isSale } from "../../../helpers";
+import { Link } from "react-router-dom";
 
 export default function Card({ data }) {
   const { clothes, addSize, deleteSize, deleteCloth } = useStore();
@@ -29,7 +30,9 @@ export default function Card({ data }) {
         src={data.featuredImage.node.sourceUrl}
         alt={data.featuredImage.node.title}
       />
-      <p className="title">{data.title}</p>
+      <Link className="title" to={"../all/" + data.id}>
+        {data.title}
+      </Link>
       {isSale(data) ? (
         <p className="price sale">${data.customFields.saleprice}</p>
       ) : (

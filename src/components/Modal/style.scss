@@ -1,0 +1,83 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(40px);
+
+  .modal {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 50px 5px #6f6f6f;
+    box-shadow: 0px 0px 50px 5px #6f6f6f;
+    animation: fadein 0.2s;
+
+    .mark {
+      display: block;
+      text-align: center;
+
+      .fa-circle-check {
+        color: rgb(21, 216, 21);
+        font-size: 2rem;
+      }
+    }
+
+    .modal-content-flex {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .done {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .added {
+        margin: 1rem 0;
+        text-transform: uppercase;
+      }
+
+      .button-group {
+        display: flex;
+        column-gap: 1rem;
+
+        a,
+        p {
+          text-decoration: none;
+          color: black;
+          font-weight: 600;
+        }
+
+        a:hover,
+        p:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
