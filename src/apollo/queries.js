@@ -72,6 +72,39 @@ const GET_ONE_ITEM = gql`
   }
 `;
 
+const GET_THREE_MORE_ITEMS = gql`
+  query GET_THREE_MORE_ITEMS($tags: [String]) {
+    clothes(
+      first: 3
+      where: {
+        tagSlugIn: $tags
+        orderby: { field: META_KEY, metaKeyField: "price", order: ASC }
+      }
+    ) {
+      nodes {
+        id
+        title
+        content
+        featuredImage {
+          node {
+            sourceUrl
+            title
+          }
+        }
+        customFields {
+          price
+          saleprice
+        }
+        tags {
+          nodes {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
+
 const GET_ITEMS_PRICE_ASC = gql`
   query GET_ITEMS_PRICE_ASC(
     $first: Int
@@ -327,4 +360,5 @@ export {
   GET_ITEMS_TITLE_ASC,
   GET_ITEMS_TITLE_DESC,
   GET_ONE_ITEM,
+  GET_THREE_MORE_ITEMS,
 };

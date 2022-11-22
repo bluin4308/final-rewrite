@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactImageMagnify from "react-image-magnify";
 import { useQuery } from "@apollo/client";
 import { GET_ONE_ITEM } from "../../apollo";
 import { isSale } from "../../helpers";
@@ -7,7 +8,7 @@ import useStore, { useTitle } from "../../store";
 import Navigation from "../Navigation";
 import NetworkError from "../NetworkError";
 import Modal from "../Modal";
-import ReactImageMagnify from "react-image-magnify";
+import MoreItems from "./MoreItems";
 import "./style.scss";
 
 const parser = new DOMParser();
@@ -44,82 +45,88 @@ export default function ClothPage() {
 
     const item = data.clothes.nodes[0];
 
+    // extract category name from item
+    const tags = item.tags.nodes.filter((tag) => tag.name !== "sale")[0].name;
+
     return (
-      <div className="cloth-page">
-        <Navigation />
-        <Modal showModal={showModal} setShowModal={setShowModal} />
-        <div className="content">
-          <ReactImageMagnify
-            {...{
-              imageStyle: {
-                borderRadius: "4px",
-                width: "90%",
-                height: "auto",
-                aspectRatio: "4/5",
-              },
-              imageClassName: "photo",
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: item.featuredImage.node.sourceUrl,
-              },
-              largeImage: {
-                src: item.featuredImage.node.sourceUrl,
-                width: 1200,
-                height: 1500,
-              },
-            }}
-          />
-          <div className="cloth-data">
-            <p className="title">{item.title}</p>
-            <p className="price">
-              {isSale(item) ? (
-                <>Only ${item.customFields.saleprice} with sale!</>
-              ) : (
-                <>${item.customFields.price}</>
-              )}
-            </p>
-            <div className="description">
-              <p className="description-title">Description:</p>
-              <p className="description-content">
-                {
-                  parser.parseFromString(item.content, "text/html").body
-                    .textContent
-                }
+      <>
+        <div className="cloth-page">
+          <Navigation />
+          <Modal showModal={showModal} setShowModal={setShowModal} />
+          <div className="content">
+            <ReactImageMagnify
+              {...{
+                imageStyle: {
+                  borderRadius: "4px",
+                  width: "90%",
+                  height: "auto",
+                  aspectRatio: "4/5",
+                },
+                imageClassName: "photo",
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: item.featuredImage.node.sourceUrl,
+                },
+                largeImage: {
+                  src: item.featuredImage.node.sourceUrl,
+                  width: 1200,
+                  height: 1500,
+                },
+              }}
+            />
+            <div className="cloth-data">
+              <p className="title">{item.title}</p>
+              <p className="price">
+                {isSale(item) ? (
+                  <>Only ${item.customFields.saleprice} with sale!</>
+                ) : (
+                  <>${item.customFields.price}</>
+                )}
               </p>
-            </div>
-            <br />
-            <p>Choose size and buy:</p>
-            <div className="sizes">
-              <button
-                onClick={() => setSize("s")}
-                className={"size-button" + (isSize("s") ? " active" : "")}
-              >
-                s
-              </button>
-              <button
-                onClick={() => setSize("m")}
-                className={"size-button" + (isSize("m") ? " active" : "")}
-              >
-                m
-              </button>
-              <button
-                onClick={() => setSize("l")}
-                className={"size-button" + (isSize("l") ? " active" : "")}
-              >
-                l
-              </button>
-              <button
-                className="size-button"
-                disabled={!size}
-                onClick={() => handleSubmit()}
-              >
-                buy
-              </button>
+              <div className="description">
+                <p className="description-title">Description:</p>
+                <p className="description-content">
+                  {
+                    parser.parseFromString(item.content, "text/html").body
+                      .textContent
+                  }
+                </p>
+              </div>
+              <br />
+              <p>Choose size and buy:</p>
+              <div className="sizes">
+                <button
+                  onClick={() => setSize("s")}
+                  className={"size-button" + (isSize("s") ? " active" : "")}
+                >
+                  s
+                </button>
+                <button
+                  onClick={() => setSize("m")}
+                  className={"size-button" + (isSize("m") ? " active" : "")}
+                >
+                  m
+                </button>
+                <button
+                  onClick={() => setSize("l")}
+                  className={"size-button" + (isSize("l") ? " active" : "")}
+                >
+                  l
+                </button>
+                <button
+                  className="size-button"
+                  disabled={!size}
+                  onClick={() => handleSubmit()}
+                >
+                  buy
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <MoreItems tags={tags} />
+      </>
     );
   }
 

@@ -8,6 +8,7 @@ import {
   GET_ITEMS_TITLE_ASC,
   GET_ITEMS_TITLE_DESC,
   GET_ONE_ITEM,
+  GET_THREE_MORE_ITEMS,
 } from "./queries";
 
 export {
@@ -19,5 +20,7 @@ export {
   GET_ITEMS_TITLE_ASC,
   GET_ITEMS_TITLE_DESC,
   GET_ONE_ITEM,
+  GET_THREE_MORE_ITEMS,
 };
+
 export default client;

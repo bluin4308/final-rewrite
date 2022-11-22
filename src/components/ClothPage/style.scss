@@ -1,39 +1,37 @@
 .cloth-page {
   display: flex;
-  margin-bottom: 25vh;
 
   .content {
     flex-basis: 80%;
     display: flex;
-    padding-bottom: 5rem;
     padding-top: 2rem;
     column-gap: 3rem;
+  }
 
-    .cloth-data {
-      .title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .price {
-        font-size: 1.1rem;
-        margin: 2rem 0;
-      }
-
-      .description {
-        margin: 1rem 0;
-      }
-
-      .description-title {
-        margin: 0.2rem 0;
-      }
+  .cloth-data {
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .photo {
-      aspect-ratio: 4 / 5 !important;
-      width: 350px !important;
-      height: auto !important;
+    .price {
+      font-size: 1.1rem;
+      margin: 2rem 0;
     }
+
+    .description {
+      margin: 1rem 0;
+    }
+
+    .description-title {
+      margin: 0.2rem 0;
+    }
+  }
+
+  .photo {
+    aspect-ratio: 4 / 5 !important;
+    width: 350px !important;
+    height: auto !important;
   }
 
   .loader {
