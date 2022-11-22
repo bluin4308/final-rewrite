@@ -64,7 +64,7 @@ export default function ClothPage() {
               </p>
             </div>
             <br />
-            <p>Choose size and buy</p>
+            <p>Choose size and buy:</p>
             <div className="sizes">
               <button
                 onClick={() => setSize("s")}

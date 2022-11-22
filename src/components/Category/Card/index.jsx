@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import Modal from "../../Modal";
 import { isSale } from "../../../helpers";
 import "./style.scss";
 
 export default function Card({ data }) {
-  // const [modal, setModal] = useState(false);
-
   return (
     <div className="card">
       <img
@@ -26,12 +23,6 @@ export default function Card({ data }) {
       <Link className="title" to={data.id}>
         {data.title}
       </Link>
-      {/* <Modal
-        visible={modal}
-        closeModal={setModal}
-        item={data}
-        isSale={isSale(data)}
-      /> */}
     </div>
   );
 }
