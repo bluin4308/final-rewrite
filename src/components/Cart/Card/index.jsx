@@ -34,7 +34,7 @@ export default function Card({ data }) {
         {data.title}
       </Link>
       {isSale(data) ? (
-        <p className="price sale">${data.customFields.saleprice}</p>
+        <p className="price">${data.customFields.saleprice}</p>
       ) : (
         <p className="price">${data.customFields.price}</p>
       )}

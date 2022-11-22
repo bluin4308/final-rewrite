@@ -38,7 +38,7 @@ export default function Cart() {
             return <Card data={item} key={index} />;
           })}
         {!loading && !!error && <NetworkError />}
-        {loading && !data && (
+        {loading && !data && clothes.length > 0 && (
           <div className="loader-container">
             <div className="loader">
               <div className="lds-ring">
