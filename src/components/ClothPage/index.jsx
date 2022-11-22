@@ -7,6 +7,7 @@ import useStore, { useTitle } from "../../store";
 import Navigation from "../Navigation";
 import NetworkError from "../NetworkError";
 import Modal from "../Modal";
+import ReactImageMagnify from "react-image-magnify";
 import "./style.scss";
 
 const parser = new DOMParser();
@@ -48,19 +49,32 @@ export default function ClothPage() {
         <Navigation />
         <Modal showModal={showModal} setShowModal={setShowModal} />
         <div className="content">
-          <img
+          {/* <img
             className="photo"
             src={item.featuredImage.node.sourceUrl}
             alt={item.featuredImage.node.title}
+          /> */}
+          <ReactImageMagnify
+            {...{
+              smallImage: {
+                alt: "Wristwatch by Ted Baker London",
+                isFluidWidth: true,
+                src: item.featuredImage.node.sourceUrl,
+              },
+              largeImage: {
+                src: item.featuredImage.node.sourceUrl,
+                width: 1200,
+                height: 1500,
+              },
+            }}
           />
           <div className="cloth-data">
             <p className="title">{item.title}</p>
             <p className="price">
-              $
               {isSale(item) ? (
-                <>{item.customFields.saleprice} with sale</>
+                <>Only ${item.customFields.saleprice} with sale!</>
               ) : (
-                <>{item.customFields.price}</>
+                <>${item.customFields.price}</>
               )}
             </p>
             <div className="description">
@@ -96,7 +110,6 @@ export default function ClothPage() {
               <button
                 className="size-button"
                 disabled={!size}
-                // onClick={() => addCloth({ id: item.id, type: size })}
                 onClick={() => handleSubmit()}
               >
                 buy
