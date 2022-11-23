@@ -44,6 +44,8 @@ export default function ClothPage() {
     };
 
     const item = data.clothes.nodes[0];
+    const descriptionContent = parser.parseFromString(item.content, "text/html")
+      .body.textContent;
 
     // extract category name from item
     const tags = item.tags.nodes.filter((tag) => tag.name !== "sale")[0].name;
@@ -86,12 +88,7 @@ export default function ClothPage() {
               </p>
               <div className="description">
                 <p className="description-title">Description:</p>
-                <p className="description-content">
-                  {
-                    parser.parseFromString(item.content, "text/html").body
-                      .textContent
-                  }
-                </p>
+                <p className="description-content">{descriptionContent}</p>
               </div>
               <br />
               <p>Choose size and buy:</p>

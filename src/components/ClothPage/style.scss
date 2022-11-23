@@ -1,5 +1,6 @@
 .cloth-page {
   display: flex;
+  min-height: 50vh;
 
   .content {
     flex-basis: 80%;
@@ -44,6 +45,7 @@
 
   .loader-container {
     width: 100%;
+    height: 100vh;
   }
 
   .sizes {
