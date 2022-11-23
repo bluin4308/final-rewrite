@@ -7,11 +7,16 @@ const useStore = create(
       clothes: [],
 
       // addCloth добавление вещи/нового размера из модалки
-      addCloth: ({ id, type }) => {
+      addCloth: ({ id, type, price }) => {
         // если ID есть в массиве clothes
         const index = get().clothes.findIndex((item) => item.id === id);
         if (index >= 0) {
           const currentClothObject = { ...get().clothes[index] };
+          const price = parseInt(currentClothObject.price);
+          const amount = parseInt(currentClothObject.amount);
+          const newAmount = price + amount;
+          currentClothObject.amount = parseInt(newAmount.toFixed(2));
+
           switch (type) {
             case "s":
               !!currentClothObject.quantityS
@@ -42,6 +47,10 @@ const useStore = create(
           const newClothObject = {
             id: id,
           };
+          newClothObject.price = price;
+          newClothObject.amount = 0;
+          newClothObject.amount += price;
+
           switch (type) {
             case "s":
               newClothObject.quantityS = 1;
@@ -76,7 +85,10 @@ const useStore = create(
       addSize: ({ id, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
-
+        const price = parseInt(currentClothObject.price);
+        const amount = parseInt(currentClothObject.amount);
+        const newAmount = price + amount;
+        currentClothObject.amount = parseInt(newAmount.toFixed(2));
         if (type === "s") {
           !!currentClothObject.quantityS
             ? currentClothObject.quantityS++
@@ -102,6 +114,11 @@ const useStore = create(
       deleteSize: ({ id, type }) => {
         const index = get().clothes.findIndex((item) => item.id === id);
         const currentClothObject = { ...get().clothes[index] };
+        const price = parseInt(currentClothObject.price);
+        const amount = parseInt(currentClothObject.amount);
+        const newAmount = amount - price;
+        currentClothObject.amount = parseInt(newAmount.toFixed(2));
+
         switch (type) {
           case "s":
             !!currentClothObject.quantityS

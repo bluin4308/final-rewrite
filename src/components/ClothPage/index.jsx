@@ -16,6 +16,7 @@ const parser = new DOMParser();
 export default function ClothPage() {
   const { id } = useParams();
   const [size, setSize] = useState(false);
+  const [price, setPrice] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const { addCloth } = useStore();
@@ -37,15 +38,19 @@ export default function ClothPage() {
     return chosenSize === size ? true : false;
   };
 
-  if (!loading && data) {
-    const handleSubmit = () => {
-      addCloth({ id: item.id, type: size });
-      setShowModal(true);
-    };
+  const handleSizeAndPrice = ({ size, price }) => {
+    setSize(size);
+    setPrice(price);
+  };
 
+  if (!loading && data) {
     const item = data.clothes.nodes[0];
     const descriptionContent = parser.parseFromString(item.content, "text/html")
       .body.textContent;
+    const handleSubmit = () => {
+      addCloth({ id: item.id, type: size, price: price });
+      setShowModal(true);
+    };
 
     // extract category name from item
     const tags = item.tags.nodes.filter((tag) => tag.name !== "sale")[0].name;
@@ -94,19 +99,40 @@ export default function ClothPage() {
               <p>Choose size and buy:</p>
               <div className="sizes">
                 <button
-                  onClick={() => setSize("s")}
+                  onClick={() =>
+                    handleSizeAndPrice({
+                      size: "s",
+                      price: isSale(item)
+                        ? item.customFields.saleprice
+                        : item.customFields.price,
+                    })
+                  }
                   className={"size-button" + (isSize("s") ? " active" : "")}
                 >
                   s
                 </button>
                 <button
-                  onClick={() => setSize("m")}
+                  onClick={() =>
+                    handleSizeAndPrice({
+                      size: "m",
+                      price: isSale(item)
+                        ? item.customFields.saleprice
+                        : item.customFields.price,
+                    })
+                  }
                   className={"size-button" + (isSize("m") ? " active" : "")}
                 >
                   m
                 </button>
                 <button
-                  onClick={() => setSize("l")}
+                  onClick={() =>
+                    handleSizeAndPrice({
+                      size: "l",
+                      price: isSale(item)
+                        ? item.customFields.saleprice
+                        : item.customFields.price,
+                    })
+                  }
                   className={"size-button" + (isSize("l") ? " active" : "")}
                 >
                   l
