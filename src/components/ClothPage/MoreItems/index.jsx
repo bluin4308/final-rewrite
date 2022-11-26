@@ -13,8 +13,8 @@ export default function MoreItems({ tags }) {
 
   return (
     <div className="get-more">
-      <button disabled={data} onClick={() => doQuery()}>
-        Show more clothes
+      <button disabled={data || loading} onClick={() => doQuery()}>
+        Show more similar clothes
       </button>
       {!loading && data && (
         <div className="cards">

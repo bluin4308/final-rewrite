@@ -52,6 +52,10 @@ export default function ClothPage() {
       setShowModal(true);
     };
 
+    const {
+      customFields: { price, saleprice },
+    } = item;
+
     // extract category name from item
     const tags = item.tags.nodes.filter((tag) => tag.name !== "sale")[0].name;
 
@@ -86,9 +90,9 @@ export default function ClothPage() {
               <p className="title">{item.title}</p>
               <p className="price">
                 {isSale(item) ? (
-                  <>Only ${item.customFields.saleprice} with sale!</>
+                  <>Only ${saleprice} with sale!</>
                 ) : (
-                  <>${item.customFields.price}</>
+                  <>${price}</>
                 )}
               </p>
               <div className="description">
@@ -102,9 +106,7 @@ export default function ClothPage() {
                   onClick={() =>
                     handleSizeAndPrice({
                       size: "s",
-                      price: isSale(item)
-                        ? item.customFields.saleprice
-                        : item.customFields.price,
+                      price: isSale(item) ? saleprice : price,
                     })
                   }
                   className={"size-button" + (isSize("s") ? " active" : "")}
@@ -115,9 +117,7 @@ export default function ClothPage() {
                   onClick={() =>
                     handleSizeAndPrice({
                       size: "m",
-                      price: isSale(item)
-                        ? item.customFields.saleprice
-                        : item.customFields.price,
+                      price: isSale(item) ? saleprice : price,
                     })
                   }
                   className={"size-button" + (isSize("m") ? " active" : "")}
@@ -128,9 +128,7 @@ export default function ClothPage() {
                   onClick={() =>
                     handleSizeAndPrice({
                       size: "l",
-                      price: isSale(item)
-                        ? item.customFields.saleprice
-                        : item.customFields.price,
+                      price: isSale(item) ? saleprice : price,
                     })
                   }
                   className={"size-button" + (isSize("l") ? " active" : "")}
