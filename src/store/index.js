@@ -5,6 +5,19 @@ const useStore = create(
   persist(
     (set, get) => ({
       clothes: [],
+      clothesTitles: {},
+
+      addClothesTitles: ({ id, title }) => {
+        const copiedArr = get().clothesTitles;
+        copiedArr[id] = title;
+        set({ clothesTitles: copiedArr });
+      },
+
+      deleteClothesTitles: ({ id }) => {
+        const copiedArr = get().clothesTitles;
+        delete copiedArr[id];
+        set({ clothesTitles: copiedArr });
+      },
 
       // addCloth добавление вещи/нового размера из модалки
       addCloth: ({ id, type, price }) => {

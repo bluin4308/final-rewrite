@@ -4,49 +4,62 @@ import { isSale } from "../../../helpers";
 import { Link } from "react-router-dom";
 
 export default function Card({ data }) {
-  const { clothes, addSize, deleteSize, deleteCloth } = useStore();
+  const { clothes, addSize, deleteSize, deleteCloth, deleteClothesTitles } =
+    useStore();
 
   const index = clothes.findIndex((cloth) => cloth.id === data.id);
 
   const item = clothes[index];
+  const {
+    title,
+    id,
+    featuredImage: {
+      node: { sourceUrl, title: alt },
+    },
+    customFields: { price, saleprice },
+  } = data;
+
+  const { quantityL, quantityM, quantityS } = item;
 
   const chosenOnlyOneSize = () => {
-    if (item.quantityS === 1 && !item.quantityM && !item.quantityL) {
+    if (quantityS === 1 && !quantityM && !quantityL) {
       return true;
     }
-    if (!item.quantityS && item.quantityM === 1 && !item.quantityL) {
+    if (!quantityS && quantityM === 1 && !quantityL) {
       return true;
     }
-    if (!item.quantityS && !item.quantityM && item.quantityL === 1) {
+    if (!quantityS && !quantityM && quantityL === 1) {
       return true;
     }
 
     return false;
   };
 
+  const handleDelete = () => {
+    deleteCloth({ id: id });
+    deleteClothesTitles({ id: id });
+  };
+
   return (
     <div className="card">
-      <img
-        src={data.featuredImage.node.sourceUrl}
-        alt={data.featuredImage.node.title}
-      />
-      <Link className="title" to={"../all/" + data.id}>
-        {data.title}
+      <img src={sourceUrl} alt={alt} />
+      <Link className="title" to={"../all/" + id}>
+        {title}
       </Link>
       {isSale(data) ? (
-        <p className="price">${data.customFields.saleprice}</p>
+        <p className="price">${saleprice}</p>
       ) : (
-        <p className="price">${data.customFields.price}</p>
+        <p className="price">${price}</p>
       )}
       <div className="size-group">
         {/* S */}
         <p>S: </p>
-        <p>{item.quantityS || 0}</p>
+        <p>{quantityS || 0}</p>
         <div className="button-group">
-          <button onClick={() => addSize({ id: data.id, type: "s" })}>+</button>
+          <button onClick={() => addSize({ id: id, type: "s" })}>+</button>
           <button
-            disabled={item.quantityS === 0 || chosenOnlyOneSize()}
-            onClick={() => deleteSize({ id: data.id, type: "s" })}
+            disabled={quantityS === 0 || chosenOnlyOneSize()}
+            onClick={() => deleteSize({ id: id, type: "s" })}
           >
             -
           </button>
@@ -55,12 +68,12 @@ export default function Card({ data }) {
       <div className="size-group">
         {/* M */}
         <p>M: </p>
-        <p>{item.quantityM || 0}</p>
+        <p>{quantityM || 0}</p>
         <div className="button-group">
-          <button onClick={() => addSize({ id: data.id, type: "m" })}>+</button>
+          <button onClick={() => addSize({ id: id, type: "m" })}>+</button>
           <button
-            disabled={item.quantityM === 0 || chosenOnlyOneSize()}
-            onClick={() => deleteSize({ id: data.id, type: "m" })}
+            disabled={quantityM === 0 || chosenOnlyOneSize()}
+            onClick={() => deleteSize({ id: id, type: "m" })}
           >
             -
           </button>
@@ -69,19 +82,19 @@ export default function Card({ data }) {
       <div className="size-group">
         {/* L */}
         <p>L: </p>
-        <p>{item.quantityL || 0}</p>
+        <p>{quantityL || 0}</p>
         <div className="button-group">
-          <button onClick={() => addSize({ id: data.id, type: "l" })}>+</button>
+          <button onClick={() => addSize({ id: id, type: "l" })}>+</button>
           <button
-            disabled={item.quantityL === 0 || chosenOnlyOneSize()}
-            onClick={() => deleteSize({ id: data.id, type: "l" })}
+            disabled={quantityL === 0 || chosenOnlyOneSize()}
+            onClick={() => deleteSize({ id: id, type: "l" })}
           >
             -
           </button>
         </div>
       </div>
       <div className="delete-cloth">
-        <button onClick={() => deleteCloth({ id: data.id })}>
+        <button onClick={() => handleDelete()}>
           <i className="fa-solid fa-xmark"></i>
         </button>
       </div>
