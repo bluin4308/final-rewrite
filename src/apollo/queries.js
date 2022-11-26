@@ -1,5 +1,27 @@
 import { gql } from "@apollo/client";
 
+const GET_COUPON = gql`
+  query GET_COUPON($title: String) {
+    coupons(where: { title: $title }) {
+      nodes {
+        title
+      }
+    }
+  }
+`;
+
+const GET_ALL_COUPONS =  gql`
+query GET_ALL_COUPONS {
+  coupons{
+    nodes{
+      title
+      customfields{
+        discount
+      }
+    }
+  }
+}`
+
 const GET_ITEMS = gql`
   query GET_ITEMS(
     $tags: [String]
@@ -361,4 +383,6 @@ export {
   GET_ITEMS_TITLE_DESC,
   GET_ONE_ITEM,
   GET_THREE_MORE_ITEMS,
+  GET_COUPON,
+  GET_ALL_COUPONS
 };

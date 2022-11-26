@@ -7,6 +7,7 @@ import Cart from "../Cart";
 import Search from "../Search";
 import About from "../About";
 import ClothPage from "../ClothPage";
+import GiftCards from "../GiftCards";
 
 const Sale = () => {
   return <Category tags={["sale"]} title="Sale" />;
@@ -30,6 +31,7 @@ export default function Routing() {
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<SaleBanner />} />
         <Route path="about" element={<About />} />
+        <Route path="gifts" element={<GiftCards />} />
         <Route path="search" element={<Search />} />
         <Route path="cart" element={<Cart />} />
         <Route path="sale" element={<Sale />} />
