@@ -14,6 +14,19 @@ import {
   GET_ITEMS_TITLE_DESC,
 } from "../../apollo";
 
+const Loader = () => {
+  return (
+    <div className="loader">
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  );
+};
+
 function selectQuery(filter) {
   switch (filter) {
     case "default":
@@ -65,61 +78,55 @@ export default function Category({ tags, title }) {
     fetchPolicy: "no-cache",
   });
 
-  if (!queryObj.loading && queryObj.data) {
-    return (
-      <div className="category">
-        <Navigation />
-        <div className="content">
-          <Pagination
-            query={query}
-            setQuery={setQuery}
-            perPage={perPage}
-            queryObj={queryObj}
-            setPerPage={setPerPage}
-            setVariables={setVariables}
-            variables={variables}
-          />
-          <div className="cards">
-            {queryObj.data.clothes.nodes.map((item, index) => {
-              return <Card data={item} key={index} />;
-            })}
-          </div>
+  return (
+    <>
+      {/* ERROR BOUNDARY */}
+      {!queryObj.loading && !!queryObj.error && (
+        <div className="category">
+          <Navigation />
+          <NetworkError />
         </div>
-      </div>
-    );
-  }
+      )}
 
-  if (queryObj.loading && !queryObj.data) {
-    return (
-      <div className="category">
-        <Navigation />
-        <div className="content">
-          <Pagination
-            perPage={perPage}
-            queryObj={queryObj}
-            setPerPage={setPerPage}
-            setVariables={setVariables}
-            variables={variables}
-          />
-          <div className="loader">
-            <div className="lds-ring">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+      {/* WHEN DATA IS LOADED */}
+      {!queryObj.loading && queryObj.data && (
+        <div className="category">
+          <Navigation />
+          <div className="content">
+            <Pagination
+              query={query}
+              setQuery={setQuery}
+              perPage={perPage}
+              queryObj={queryObj}
+              setPerPage={setPerPage}
+              setVariables={setVariables}
+              variables={variables}
+            />
+            <div className="cards">
+              {queryObj.data.clothes.nodes.map((item, index) => {
+                return <Card data={item} key={index} />;
+              })}
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      )}
 
-  if (!queryObj.loading && !!queryObj.error) {
-    return (
-      <div className="category">
-        <Navigation />
-        <NetworkError />
-      </div>
-    );
-  }
+      {/* LOADING ANIMATION */}
+      {queryObj.loading && !queryObj.data && (
+        <div className="category">
+          <Navigation />
+          <div className="content">
+            <Pagination
+              perPage={perPage}
+              queryObj={queryObj}
+              setPerPage={setPerPage}
+              setVariables={setVariables}
+              variables={variables}
+            />
+            <Loader />
+          </div>
+        </div>
+      )}
+    </>
+  );
 }

@@ -53,7 +53,11 @@ export default function ClothPage() {
     };
 
     const {
-      customFields: { price, saleprice },
+      customFields: { price: itemPrice, saleprice },
+      title,
+      featuredImage: {
+        node: { sourceUrl },
+      },
     } = item;
 
     // extract category name from item
@@ -77,22 +81,22 @@ export default function ClothPage() {
                 smallImage: {
                   alt: "Wristwatch by Ted Baker London",
                   isFluidWidth: true,
-                  src: item.featuredImage.node.sourceUrl,
+                  src: sourceUrl,
                 },
                 largeImage: {
-                  src: item.featuredImage.node.sourceUrl,
+                  src: sourceUrl,
                   width: 1200,
                   height: 1500,
                 },
               }}
             />
             <div className="cloth-data">
-              <p className="title">{item.title}</p>
+              <p className="title">{title}</p>
               <p className="price">
                 {isSale(item) ? (
                   <>Only ${saleprice} with sale!</>
                 ) : (
-                  <>${price}</>
+                  <>${itemPrice}</>
                 )}
               </p>
               <div className="description">
@@ -106,7 +110,7 @@ export default function ClothPage() {
                   onClick={() =>
                     handleSizeAndPrice({
                       size: "s",
-                      price: isSale(item) ? saleprice : price,
+                      price: isSale(item) ? saleprice : itemPrice,
                     })
                   }
                   className={"size-button" + (isSize("s") ? " active" : "")}
@@ -117,7 +121,7 @@ export default function ClothPage() {
                   onClick={() =>
                     handleSizeAndPrice({
                       size: "m",
-                      price: isSale(item) ? saleprice : price,
+                      price: isSale(item) ? saleprice : itemPrice,
                     })
                   }
                   className={"size-button" + (isSize("m") ? " active" : "")}
@@ -128,7 +132,7 @@ export default function ClothPage() {
                   onClick={() =>
                     handleSizeAndPrice({
                       size: "l",
-                      price: isSale(item) ? saleprice : price,
+                      price: isSale(item) ? saleprice : itemPrice,
                     })
                   }
                   className={"size-button" + (isSize("l") ? " active" : "")}
