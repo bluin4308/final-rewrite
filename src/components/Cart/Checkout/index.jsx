@@ -22,12 +22,14 @@ export default function Checkout() {
         }}
         validate={(values) => {
           const errors = {};
-          if (!values.email) {
-            errors.usermail = true;
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          if (!values.useremail) {
+            errors.useremail = true;
+          }
+
+          if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.useremail)
           ) {
-            errors.usermail = true;
+            errors.useremail = true;
           }
 
           if (!values.username) {
