@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 
 export default function Coupon({ data }) {
-  const [discountCode] = useState(data.customfields.discount);
+  const [discountCode] = useState(data.title);
 
   return (
     <div className="coupon">
       <p>
         <span>Coupon name: </span>
-        <span className="title">{data.title}</span>
-      </p>
-      <p>
-        <span>Discount size: </span>
         <span
-          className="discount"
+          className="title"
           onClick={() => {
             navigator.clipboard.writeText(discountCode);
           }}
         >
-          {data.customfields.discount}
+          {data.title}
         </span>
+      </p>
+      <p>
+        <span>Discount size: </span>
+        <span className="discount">{data.customfields.discount}</span>
       </p>
     </div>
   );
