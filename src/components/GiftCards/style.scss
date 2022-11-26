@@ -1,7 +1,49 @@
 .gifts {
   display: flex;
+  min-height: 100vh;
+
+  .description {
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+
+  .loader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 7rem;
+  }
+
+  .loader-container {
+    width: 100%;
+  }
 
   .content {
     flex-basis: 80%;
+
+    .coupon {
+      padding: 1rem 2rem;
+      border: 1px solid lightgray;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      .title {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+      }
+
+      .discount {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-family: monospace;
+        cursor: pointer;
+      }
+    }
   }
 }

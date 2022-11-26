@@ -34,12 +34,31 @@ export default function GiftCard() {
         <>
           {/* <Navigation /> */}
           <div className="content">
+            <p className="description">Use this coupons to get discount.</p>
             {data.coupons.nodes.map((item, index) => {
               return <Coupon data={item} key={index} />;
             })}
           </div>
         </>
       )}
+
+      {/* LOADDING ANIMATION */}
+      {loading && !data && <Loader />}
     </div>
   );
 }
+
+const Loader = () => {
+  return (
+    <div className="loader-container">
+      <div className="loader">
+        <div className="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  );
+};
