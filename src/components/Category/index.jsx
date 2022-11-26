@@ -73,7 +73,7 @@ export default function Category({ tags, title }) {
     });
   }, [perPage]);
 
-  const queryObj = useQuery(selectQuery(query), {
+  const { data, loading, error } = useQuery(selectQuery(query), {
     variables: variables,
     fetchPolicy: "no-cache",
   });
@@ -81,7 +81,7 @@ export default function Category({ tags, title }) {
   return (
     <>
       {/* ERROR BOUNDARY */}
-      {!queryObj.loading && !!queryObj.error && (
+      {!loading && !!error && (
         <div className="category">
           <Navigation />
           <NetworkError />
@@ -89,7 +89,7 @@ export default function Category({ tags, title }) {
       )}
 
       {/* WHEN DATA IS LOADED */}
-      {!queryObj.loading && queryObj.data && (
+      {!loading && data && (
         <div className="category">
           <Navigation />
           <div className="content">
@@ -97,13 +97,14 @@ export default function Category({ tags, title }) {
               query={query}
               setQuery={setQuery}
               perPage={perPage}
-              queryObj={queryObj}
+              data={data}
+              loading={loading}
               setPerPage={setPerPage}
               setVariables={setVariables}
               variables={variables}
             />
             <div className="cards">
-              {queryObj.data.clothes.nodes.map((item, index) => {
+              {data.clothes.nodes.map((item, index) => {
                 return <Card data={item} key={index} />;
               })}
             </div>
@@ -112,13 +113,13 @@ export default function Category({ tags, title }) {
       )}
 
       {/* LOADING ANIMATION */}
-      {queryObj.loading && !queryObj.data && (
+      {loading && !data && (
         <div className="category">
           <Navigation />
           <div className="content">
             <Pagination
-              perPage={perPage}
-              queryObj={queryObj}
+              data={data}
+              loading={loading}
               setPerPage={setPerPage}
               setVariables={setVariables}
               variables={variables}
