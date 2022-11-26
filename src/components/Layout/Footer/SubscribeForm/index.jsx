@@ -59,10 +59,7 @@ export default memo(function SubscribeForm() {
             value={values.email}
             className={errors.email && touched.email && dirty ? "error" : ""}
           />
-          <button
-            type="submit"
-            disabled={!isValid || errors.email || isSubmitting || !dirty}
-          >
+          <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
             Subscribe
           </button>
         </form>

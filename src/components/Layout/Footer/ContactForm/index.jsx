@@ -106,18 +106,7 @@ export default function ContactForm() {
               value={values.message}
               className={errors.message && touched.message ? "error" : ""}
             />
-            <button
-              type="submit"
-              disabled={
-                !isValid ||
-                errors.email ||
-                errors.message ||
-                errors.username ||
-                errors.subject ||
-                isSubmitting ||
-                !dirty
-              }
-            >
+            <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
               Send
             </button>
           </form>
