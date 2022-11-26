@@ -28,14 +28,19 @@ export default function Checkout() {
           ) {
             errors.usermail = true;
           }
+
           if (!values.username) {
             errors.username = true;
           }
+
           if (!values.address) {
             errors.address = true;
           }
-          if (!values.subject) {
-            errors.subject = "Required";
+
+          if (!values.zip) {
+            errors.zip = true;
+          } else if (/\D/.test(values.zip)) {
+            errors.zip = true;
           }
 
           return errors;

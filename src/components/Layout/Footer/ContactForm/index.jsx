@@ -17,20 +17,20 @@ export default function ContactForm() {
         validate={(values) => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = true;
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Invalid email address";
+            errors.email = true;
           }
           if (!values.username) {
-            errors.username = "Required";
+            errors.username = true;
           }
           if (!values.message) {
-            errors.message = "Required";
+            errors.message = true;
           }
           if (!values.subject) {
-            errors.subject = "Required";
+            errors.subject = true;
           }
 
           return errors;
