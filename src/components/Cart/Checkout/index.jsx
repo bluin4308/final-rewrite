@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
+import { Persist } from "formik-persist";
 import useStore from "../../../store";
 
 export default function Checkout() {
@@ -137,6 +138,7 @@ export default function Checkout() {
             <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
               Buy
             </button>
+            <Persist name="signup-form" />
           </form>
         )}
       </Formik>
