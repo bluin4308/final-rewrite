@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { Persist } from "formik-persist";
 import useStore from "../../../store";
@@ -9,6 +9,8 @@ export default function Checkout() {
   const totalSum = clothes.reduce((acc, obj) => {
     return acc + parseInt(obj.amount);
   }, 0);
+
+  const [total, setTotal] = useState(totalSum);
 
   return (
     <div className="checkout">
@@ -54,7 +56,7 @@ export default function Checkout() {
           data.append("useremail", values.useremail);
           data.append("address", values.address);
           data.append("zip", values.zip);
-          data.append("total", totalSum.toFixed(2));
+          data.append("total", total.toFixed(2));
           data.append("clothes", clothes);
           fetch(
             "https://dsa1mc.wp4.host/wp-json/contact-form-7/v1/contact-forms/91/feedback",
@@ -137,9 +139,11 @@ export default function Checkout() {
                 className={errors.zip && touched.zip ? "error" : ""}
               />
             </div>
+            <p className="total"> Total Sum: ${total}</p>
             <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
               Buy
             </button>
+
             <Persist name="signup-form" />
           </form>
         )}

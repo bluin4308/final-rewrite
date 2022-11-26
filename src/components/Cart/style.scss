@@ -66,6 +66,12 @@
         }
       }
 
+      .total {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        font-weight: 600;
+      }
+
       button:disabled {
         background-color: #fafbfc;
         border-color: rgba(27, 31, 35, 0.15);
