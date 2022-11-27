@@ -8,7 +8,7 @@ import "./style.scss";
 
 export default function Search() {
   const [searchText, setSearchText] = useState("");
-  const [searchItems, { loading, data }] = useLazyQuery(SEARCH_ITEMS, {
+  const [doSearchItemsQuery, { loading, data }] = useLazyQuery(SEARCH_ITEMS, {
     fetchPolicy: "no-cache",
   });
 
@@ -20,7 +20,7 @@ export default function Search() {
 
   useEffect(() => {
     if (searchText.trim() !== "") {
-      searchItems({
+      doSearchItemsQuery({
         variables: {
           search: searchText.trim(),
         },
