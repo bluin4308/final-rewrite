@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik } from "formik";
 import { Persist } from "formik-persist";
 import useStore from "../../../store";
@@ -11,6 +11,10 @@ export default function Checkout() {
   }, 0);
 
   const [total, setTotal] = useState(totalSum);
+
+  useEffect(() => {
+    setTotal(totalSum);
+  }, [totalSum]);
 
   return (
     <div className="checkout">
@@ -50,7 +54,7 @@ export default function Checkout() {
 
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
           const data = new FormData();
           data.append("username", values.username);
           data.append("useremail", values.useremail);
@@ -68,9 +72,11 @@ export default function Checkout() {
             if (res.ok) {
               alert("Your order was sent!");
               setSubmitting(false);
+              resetForm();
             } else {
               alert("Something went wrong!");
               setSubmitting(false);
+              resetForm();
             }
           });
         }}

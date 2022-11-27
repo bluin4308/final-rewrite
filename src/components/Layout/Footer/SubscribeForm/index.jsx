@@ -59,10 +59,10 @@ export default memo(function SubscribeForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
-            className={
+            className={String(
               (errors.email && dirty && "error") ||
-              (!errors.email && dirty && "valid")
-            }
+                (!errors.email && dirty && "valid")
+            )}
           />
           <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
             Subscribe
