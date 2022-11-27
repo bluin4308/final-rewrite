@@ -16,7 +16,7 @@ export default memo(function SubscribeForm() {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         const data = new FormData();
         data.append("email", values.email);
         fetch(
@@ -29,9 +29,11 @@ export default memo(function SubscribeForm() {
           if (res.ok) {
             alert("Your message was sent!");
             setSubmitting(false);
+            resetForm();
           } else {
             alert("Something goes wrong!");
             setSubmitting(false);
+            resetForm();
           }
         });
       }}
@@ -57,7 +59,10 @@ export default memo(function SubscribeForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
-            className={errors.email && touched.email && dirty ? "error" : ""}
+            className={
+              (errors.email && dirty && "error") ||
+              (!errors.email && dirty && "valid")
+            }
           />
           <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
             Subscribe

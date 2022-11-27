@@ -35,7 +35,7 @@ export default function ContactForm() {
 
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
           const data = new FormData();
           data.append("email", values.email);
           data.append("message", values.message);
@@ -51,9 +51,11 @@ export default function ContactForm() {
             if (res.ok) {
               alert("Your message was sent!");
               setSubmitting(false);
+              resetForm();
             } else {
               alert("Something goes wrong!");
               setSubmitting(false);
+              resetForm();
             }
           });
         }}
@@ -77,7 +79,10 @@ export default function ContactForm() {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.username}
-              className={errors.username && touched.username ? "error" : ""}
+              className={
+                (errors.username && touched.username && "error") ||
+                (!errors.username && dirty && "valid")
+              }
             />
             <input
               type="email"
@@ -86,7 +91,10 @@ export default function ContactForm() {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-              className={errors.email && touched.email ? "error" : ""}
+              className={
+                (errors.email && touched.email && "error") ||
+                (!errors.email && dirty && "valid")
+              }
             />
             <input
               type="text"
@@ -95,7 +103,10 @@ export default function ContactForm() {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.subject}
-              className={errors.subject && touched.subject ? "error" : ""}
+              className={
+                (errors.subject && touched.subject && "error") ||
+                (!errors.subject && dirty && "valid")
+              }
             />
             <input
               type="text"
@@ -104,7 +115,10 @@ export default function ContactForm() {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.message}
-              className={errors.message && touched.message ? "error" : ""}
+              className={
+                (errors.message && touched.message && "error") ||
+                (!errors.message && dirty && "valid")
+              }
             />
             <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
               Send

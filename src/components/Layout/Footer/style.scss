@@ -64,6 +64,14 @@
           outline: 1px solid red;
         }
 
+        .valid {
+          outline: 1px solid green;
+        }
+
+        .valid:focus {
+          outline: 1px solid green;
+        }
+
         input.error:focus {
           outline: 1px solid red;
         }
@@ -148,6 +156,14 @@
 
     .error {
       outline: 1px solid red;
+    }
+
+    .valid {
+      outline: 1px solid green;
+    }
+
+    .valid:focus {
+      outline: 1px solid green;
     }
 
     button {
