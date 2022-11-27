@@ -4,7 +4,7 @@ import { Persist } from "formik-persist";
 import useStore from "../../../store";
 
 export default function Checkout() {
-  const { clothes } = useStore();
+  const { clothes, clothesTitles } = useStore();
 
   const totalSum = clothes.reduce((acc, obj) => {
     return acc + parseInt(obj.amount);
@@ -61,7 +61,9 @@ export default function Checkout() {
           data.append("address", values.address);
           data.append("zip", values.zip);
           data.append("total", total.toFixed(2));
-          data.append("clothes", clothes);
+          const clothesString = Object.values(clothesTitles).join(", ");
+          data.append("clothes", clothesString);
+
           fetch(
             "https://dsa1mc.wp4.host/wp-json/contact-form-7/v1/contact-forms/91/feedback",
             {

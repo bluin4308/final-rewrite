@@ -75,7 +75,7 @@ export default function ContactForm() {
             <input
               type="text"
               name="username"
-              placeholder="Name"
+              placeholder="Enter your full name here"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.username}
@@ -87,7 +87,7 @@ export default function ContactForm() {
             <input
               type="email"
               name="email"
-              placeholder="Enter email here"
+              placeholder="Enter your email here"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
