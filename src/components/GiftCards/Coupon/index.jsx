@@ -18,7 +18,7 @@ export default function Coupon({ data }) {
       </p>
       <p>
         <span>Discount size: </span>
-        <span className="discount">{data.customfields.discount}</span>
+        <span className="discount">{data.customfields.discount}%</span>
       </p>
     </div>
   );

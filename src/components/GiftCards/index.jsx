@@ -34,7 +34,10 @@ export default function GiftCard() {
         <>
           {/* <Navigation /> */}
           <div className="content">
-            <p className="description">Use this coupons to get discount.</p>
+            <p className="description">
+              Use this coupons to get discount. Just click on coupon title to
+              copy to the clipboard.
+            </p>
             {data.coupons.nodes.map((item, index) => {
               return <Coupon data={item} key={index} />;
             })}
