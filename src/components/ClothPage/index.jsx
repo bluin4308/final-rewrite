@@ -19,7 +19,7 @@ export default function ClothPage() {
   const [price, setPrice] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const { addCloth, addClothesTitles } = useStore();
+  const { addCloth } = useStore();
 
   const { setTitle } = useTitle();
 
@@ -47,12 +47,6 @@ export default function ClothPage() {
     const item = data.clothes.nodes[0];
     const descriptionContent = parser.parseFromString(item.content, "text/html")
       .body.textContent;
-    const handleSubmit = () => {
-      addClothesTitles({ id: item.id, title: item.title });
-      addCloth({ id: item.id, type: size, price: price });
-      setShowModal(true);
-    };
-
     const {
       customFields: { price: itemPrice, saleprice },
       title,
@@ -60,6 +54,10 @@ export default function ClothPage() {
         node: { sourceUrl },
       },
     } = item;
+    const handleSubmit = () => {
+      addCloth({ id: id, type: size, price: price, title: title });
+      setShowModal(true);
+    };
 
     // extract category name from item
     const tags = item.tags.nodes.filter((tag) => tag.name !== "sale")[0].name;

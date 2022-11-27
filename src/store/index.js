@@ -5,22 +5,9 @@ const useStore = create(
   persist(
     (set, get) => ({
       clothes: [],
-      clothesTitles: {},
-
-      addClothesTitles: ({ id, title }) => {
-        const copiedArr = get().clothesTitles;
-        copiedArr[id] = title;
-        set({ clothesTitles: copiedArr });
-      },
-
-      deleteClothesTitles: ({ id }) => {
-        const copiedArr = get().clothesTitles;
-        delete copiedArr[id];
-        set({ clothesTitles: copiedArr });
-      },
 
       // addCloth добавление вещи/нового размера из модалки
-      addCloth: ({ id, type, price }) => {
+      addCloth: ({ id, type, price, title }) => {
         // если ID есть в массиве clothes
         const index = get().clothes.findIndex((item) => item.id === id);
         if (index >= 0) {
@@ -63,6 +50,7 @@ const useStore = create(
           newClothObject.price = price;
           newClothObject.amount = 0;
           newClothObject.amount += price;
+          newClothObject.title = title;
 
           switch (type) {
             case "s":

@@ -4,8 +4,7 @@ import { isSale } from "../../../helpers";
 import { Link } from "react-router-dom";
 
 export default function Card({ data }) {
-  const { clothes, addSize, deleteSize, deleteCloth, deleteClothesTitles } =
-    useStore();
+  const { clothes, addSize, deleteSize, deleteCloth } = useStore();
 
   const index = clothes.findIndex((cloth) => cloth.id === data.id);
 
@@ -37,7 +36,6 @@ export default function Card({ data }) {
 
   const handleDelete = () => {
     deleteCloth({ id: id });
-    deleteClothesTitles({ id: id });
   };
 
   return (

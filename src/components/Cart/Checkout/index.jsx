@@ -3,8 +3,21 @@ import { Formik } from "formik";
 import { Persist } from "formik-persist";
 import useStore from "../../../store";
 
+const composeString = (arr) => {
+  const result = arr.map(
+    ({ title, quantityL, quantityM, quantityS }) =>
+      title +
+      " Sizes " +
+      `(S: ${quantityS || 0}` +
+      ` M: ${quantityM || 0}` +
+      ` L: ${quantityL || 0})`
+  );
+  const composedString = result.join(", ");
+  return composedString;
+};
+
 export default function Checkout() {
-  const { clothes, clothesTitles } = useStore();
+  const { clothes } = useStore();
 
   const totalSum = clothes.reduce((acc, obj) => {
     return acc + parseInt(obj.amount);
@@ -61,9 +74,7 @@ export default function Checkout() {
           data.append("address", values.address);
           data.append("zip", values.zip);
           data.append("total", total.toFixed(2));
-          const clothesString = Object.values(clothesTitles).join(", ");
-          data.append("clothes", clothesString);
-
+          data.append("clothes", composeString(clothes));
           fetch(
             "https://dsa1mc.wp4.host/wp-json/contact-form-7/v1/contact-forms/91/feedback",
             {
