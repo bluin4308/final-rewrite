@@ -6,7 +6,8 @@ export default function Pagination({
   setPerPage,
   setQuery,
   query,
-  queryObj,
+  loading,
+  data,
   setVariables,
   variables,
 }) {
@@ -33,12 +34,10 @@ export default function Pagination({
       <div className="pagination-button-group">
         <button
           className="pagination-button"
-          disabled={
-            queryObj.loading || !queryObj.data.clothes.pageInfo.hasPreviousPage
-          }
+          disabled={loading || !data.clothes.pageInfo.hasPreviousPage}
           onClick={() =>
             setVariables({
-              before: queryObj.data.clothes.pageInfo.startCursor,
+              before: data.clothes.pageInfo.startCursor,
               last: parseInt(perPage),
               tags: variables.tags,
             })
@@ -48,12 +47,10 @@ export default function Pagination({
         </button>
         <button
           className="pagination-button"
-          disabled={
-            queryObj.loading || !queryObj.data.clothes.pageInfo.hasNextPage
-          }
+          disabled={loading || !data.clothes.pageInfo.hasNextPage}
           onClick={() =>
             setVariables({
-              after: queryObj.data.clothes.pageInfo.endCursor,
+              after: data.clothes.pageInfo.endCursor,
               first: parseInt(perPage),
               tags: variables.tags,
             })

@@ -9,9 +9,12 @@ import {
   GET_ITEMS_TITLE_DESC,
   GET_ONE_ITEM,
   GET_THREE_MORE_ITEMS,
+  GET_COUPON,
+  GET_ALL_COUPONS,
 } from "./queries";
 
 export {
+  GET_COUPON,
   GET_ITEMS,
   SEARCH_ITEMS,
   GET_CART_ITEMS,
@@ -21,6 +24,7 @@ export {
   GET_ITEMS_TITLE_DESC,
   GET_ONE_ITEM,
   GET_THREE_MORE_ITEMS,
+  GET_ALL_COUPONS,
 };
 
 export default client;

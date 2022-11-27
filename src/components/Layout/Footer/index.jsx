@@ -18,7 +18,7 @@ export default memo(function Footer() {
           <Link to="#">Find store</Link>
           <Link to="#">Shipment</Link>
           <Link to="#">Payment</Link>
-          <Link to="#">Gift card</Link>
+          <Link to="gifts">Gift card</Link>
           <Link to="#">Return</Link>
           <Link to="#">Help</Link>
           {/* навлинки  */}

@@ -16,6 +16,8 @@ export default function MoreItems({ tags }) {
       <button disabled={data || loading} onClick={() => doQuery()}>
         Show more similar clothes
       </button>
+
+      {/* DATA LOADED */}
       {!loading && data && (
         <div className="cards">
           {data.clothes.nodes.map((item, index) => {
