@@ -5,6 +5,9 @@ const useStore = create(
   persist(
     (set, get) => ({
       clothes: [],
+      cleanClothes: () => {
+        set({ clothes: [] });
+      },
 
       // addCloth добавление вещи/нового размера из модалки
       addCloth: ({ id, type, price, title }) => {

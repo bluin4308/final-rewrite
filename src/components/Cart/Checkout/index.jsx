@@ -17,7 +17,7 @@ const composeString = (arr) => {
 };
 
 export default function Checkout() {
-  const { clothes } = useStore();
+  const { clothes, cleanClothes } = useStore();
 
   const totalSum = clothes.reduce((acc, obj) => {
     return acc + parseInt(obj.amount);
@@ -86,10 +86,12 @@ export default function Checkout() {
               alert("Your order was sent!");
               setSubmitting(false);
               resetForm();
+              cleanClothes();
             } else {
               alert("Something went wrong!");
               setSubmitting(false);
               resetForm();
+              cleanClothes();
             }
           });
         }}
@@ -101,7 +103,6 @@ export default function Checkout() {
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting,
           isValid,
           dirty,
         }) => (
@@ -159,7 +160,7 @@ export default function Checkout() {
               />
             </div>
             <p className="total"> Total Sum: ${total}</p>
-            <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
+            <button type="submit" disabled={!isValid || !dirty}>
               Buy
             </button>
 
