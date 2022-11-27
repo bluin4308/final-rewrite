@@ -56,7 +56,7 @@ export default function Card({ data }) {
         <div className="button-group">
           <button onClick={() => addSize({ id: id, type: "s" })}>+</button>
           <button
-            disabled={quantityS === 0 || chosenOnlyOneSize()}
+            disabled={!quantityS || chosenOnlyOneSize()}
             onClick={() => deleteSize({ id: id, type: "s" })}
           >
             -
@@ -70,7 +70,7 @@ export default function Card({ data }) {
         <div className="button-group">
           <button onClick={() => addSize({ id: id, type: "m" })}>+</button>
           <button
-            disabled={quantityM === 0 || chosenOnlyOneSize()}
+            disabled={!quantityM || chosenOnlyOneSize()}
             onClick={() => deleteSize({ id: id, type: "m" })}
           >
             -
@@ -84,7 +84,7 @@ export default function Card({ data }) {
         <div className="button-group">
           <button onClick={() => addSize({ id: id, type: "l" })}>+</button>
           <button
-            disabled={quantityL === 0 || chosenOnlyOneSize()}
+            disabled={!quantityL || chosenOnlyOneSize()}
             onClick={() => deleteSize({ id: id, type: "l" })}
           >
             -
