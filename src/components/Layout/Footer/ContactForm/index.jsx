@@ -81,7 +81,8 @@ export default function ContactForm() {
               value={values.username}
               className={
                 (errors.username && touched.username && "error") ||
-                (!errors.username && dirty && "valid")
+                (!errors.username && dirty && "valid") ||
+                " "
               }
             />
             <input
@@ -93,7 +94,8 @@ export default function ContactForm() {
               value={values.email}
               className={
                 (errors.email && touched.email && "error") ||
-                (!errors.email && dirty && "valid")
+                (!errors.email && dirty && "valid") ||
+                " "
               }
             />
             <input
@@ -105,7 +107,8 @@ export default function ContactForm() {
               value={values.subject}
               className={
                 (errors.subject && touched.subject && "error") ||
-                (!errors.subject && dirty && "valid")
+                (!errors.subject && dirty && "valid") ||
+                " "
               }
             />
             <input
@@ -117,7 +120,8 @@ export default function ContactForm() {
               value={values.message}
               className={
                 (errors.message && touched.message && "error") ||
-                (!errors.message && dirty && "valid")
+                (!errors.message && dirty && "valid") ||
+                " "
               }
             />
             <button type="submit" disabled={!isValid || isSubmitting || !dirty}>
