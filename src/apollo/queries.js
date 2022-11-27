@@ -5,22 +5,26 @@ const GET_COUPON = gql`
     coupons(where: { title: $title }) {
       nodes {
         title
+        customfields {
+          discount
+        }
       }
     }
   }
 `;
 
-const GET_ALL_COUPONS =  gql`
-query GET_ALL_COUPONS {
-  coupons{
-    nodes{
-      title
-      customfields{
-        discount
+const GET_ALL_COUPONS = gql`
+  query GET_ALL_COUPONS {
+    coupons {
+      nodes {
+        title
+        customfields {
+          discount
+        }
       }
     }
   }
-}`
+`;
 
 const GET_ITEMS = gql`
   query GET_ITEMS(
@@ -384,5 +388,5 @@ export {
   GET_ONE_ITEM,
   GET_THREE_MORE_ITEMS,
   GET_COUPON,
-  GET_ALL_COUPONS
+  GET_ALL_COUPONS,
 };
