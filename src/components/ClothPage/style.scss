@@ -112,3 +112,19 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cloth-page {
+    .content {
+      flex-basis: 70%;
+      align-items: center;
+    }
+    .photo {
+      text-align: center;
+      aspect-ratio: 4 / 5 !important;
+      width: 80% !important;
+      height: auto !important;
+      margin: 0 auto;
+    }
+  }
+}
