@@ -26,10 +26,15 @@ export default function Checkout() {
 
   const [total, setTotal] = useState(totalSum);
   const [couponDiscount, setCouponDiscount] = useState(0);
-  console.log(couponDiscount);
+
   useEffect(() => {
-    setTotal(totalSum);
-  }, [totalSum]);
+    if (couponDiscount) {
+      const newTotal = totalSum - totalSum * (Number(couponDiscount) / 100);
+      setTotal(newTotal);
+    } else {
+      setTotal(totalSum);
+    }
+  }, [totalSum, couponDiscount]);
 
   return (
     <>
@@ -93,8 +98,6 @@ export default function Checkout() {
               } else {
                 alert("Something went wrong!");
                 setSubmitting(false);
-                resetForm();
-                cleanClothes();
               }
             });
           }}
@@ -164,7 +167,12 @@ export default function Checkout() {
                   className={errors.zip && touched.zip ? "error" : ""}
                 />
               </div>
-              <p className="total"> Total Sum: ${total}</p>
+              <p className="total">
+                {/* Total Sum: ${total} */}
+                {couponDiscount
+                  ? `Total amount with discount: $${total}`
+                  : `Total amount without discount: $${total}`}
+              </p>
               <button type="submit" disabled={!isValid || !dirty}>
                 Buy
               </button>

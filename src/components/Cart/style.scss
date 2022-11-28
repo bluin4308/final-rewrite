@@ -62,7 +62,7 @@
           outline: 1px solid lightgray;
         }
 
-        .error {
+        input.error:focus {
           border: 1px solid red;
         }
       }
