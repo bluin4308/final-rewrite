@@ -14,12 +14,12 @@ body {
   }
 
   .container {
-    max-width: 1400px;
+    max-width: 1380px;
     margin: 0 auto;
     min-height: 100vh;
 
     @media screen and (max-width: $desktop) {
-      width: 1250px;
+      width: 1200px;
     }
 
     @media screen and (max-width: $large-latop) {
@@ -27,7 +27,7 @@ body {
     }
 
     @media screen and (max-width: $laptop) {
-      width: 1000px;
+      width: 960px;
     }
 
     @media screen and (max-width: $tablet) {
