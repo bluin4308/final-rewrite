@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import Navigation from "../Navigation";
+import { Link } from "react-router-dom";
 import { useTitle } from "../../store";
+import Navigation from "../Navigation";
 import "./style.scss";
 
 export default function About() {
@@ -20,6 +21,10 @@ export default function About() {
           of all ages and types. We will be glad if you buy something in our
           store!
         </p>
+        <div className="links">
+          <p>Other pages:</p>
+          <Link to="../gifts">Gift cards</Link>
+        </div>
       </div>
     </div>
   );
