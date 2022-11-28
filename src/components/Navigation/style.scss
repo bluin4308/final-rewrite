@@ -23,3 +23,12 @@
     font-weight: 600;
   }
 }
+
+@media screen and (max-width: 650px) {
+  .navigation {
+    flex-basis: 15%;
+    a {
+      font-size: 0.9rem;
+    }
+  }
+}
