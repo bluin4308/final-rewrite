@@ -13,7 +13,7 @@ export default memo(function Footer() {
         <div className="about">
           <p className="label">About</p>
           <Link to="about">About us</Link>
-          <Link to="careers">We're hiring</Link>
+          <Link to="#">We're hiring</Link>
           <Link to="#">Support</Link>
           <Link to="#">Find store</Link>
           <Link to="#">Shipment</Link>
