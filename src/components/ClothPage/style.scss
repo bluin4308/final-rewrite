@@ -101,3 +101,14 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .cloth-page {
+    .content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 1rem;
+    }
+  }
+}
