@@ -1,6 +1,7 @@
 .cart-layout {
   display: flex;
   min-height: 100vh;
+  justify-content: space-between;
 
   .loader {
     width: 100%;
@@ -256,6 +257,31 @@
     .card:hover {
       box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
         0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .cart-layout {
+    ._80percent {
+      .card {
+        column-gap: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .cart-layout {
+    ._80percent {
+      .card {
+        flex-direction: column;
+        row-gap: 1rem;
+
+        img {
+          width: 70%;
+        }
+      }
     }
   }
 }
