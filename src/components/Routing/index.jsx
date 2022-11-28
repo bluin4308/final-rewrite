@@ -8,7 +8,7 @@ import Search from "../Search";
 import About from "../About";
 import ClothPage from "../ClothPage";
 import GiftCards from "../GiftCards";
-
+import NotFoundPage from "../NotFoundPage";
 const Sale = () => {
   return <Category tags={["sale"]} title="Sale" />;
 };
@@ -42,7 +42,7 @@ export default function Routing() {
         <Route path="jackets/:id" element={<ClothPage />} />
         <Route path="all" element={<AllClothes />} />
         <Route path="all/:id" element={<ClothPage />} />
-        <Route path="*" element={<p>error</p>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

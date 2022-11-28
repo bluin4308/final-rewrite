@@ -148,12 +148,6 @@ const useStore = create(
           return { clothes: currentClothesArray };
         });
       },
-
-      // написать добавление стоимости в cloth для методов addCloth, addSize, deleteSize
-      // usecase: click Buy button(Modal) -> cloth нет в массиве clothes ->
-      //  -> addCloth({id,type,price(тут проверка на скидку через isSale)})
-
-      // usecase: click Buy button(Modal) -> cloth есть в массиве -> внутри else в addCloth
     }),
     {
       name: "clothes",
